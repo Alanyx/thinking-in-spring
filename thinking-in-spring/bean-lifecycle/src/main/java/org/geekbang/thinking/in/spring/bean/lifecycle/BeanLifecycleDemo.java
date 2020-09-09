@@ -35,7 +35,7 @@ public class BeanLifecycleDemo {
         beanFactory.addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
         // 添加 MyDestructionAwareBeanPostProcessor 执行销毁前回调
         beanFactory.addBeanPostProcessor(new MyDestructionAwareBeanPostProcessor());
-        // 添加 CommonAnnotationBeanPostProcessor 解决 @PostConstruct @PreDestroy
+        // 添加 CommonAnnotationBeanPostProcessor 解决 @PostConstruct @PreDestroy 回调
         beanFactory.addBeanPostProcessor(new CommonAnnotationBeanPostProcessor());
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
@@ -59,7 +59,7 @@ public class BeanLifecycleDemo {
 
         System.out.println(userHolder);
 
-        // 执行 Bean 销毁（容器内）
+        // 执行 Bean 销毁（容器内，不代表被 GC 了）
         beanFactory.destroyBean("userHolder", userHolder);
         // Bean 销毁并不意味着 Bean 垃圾回收了
         System.out.println(userHolder);

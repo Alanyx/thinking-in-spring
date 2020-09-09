@@ -5,6 +5,7 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="userFactoryServiceLoader" class="org.springframework.beans.factory.serviceloader.ServiceLoaderFactoryBean">
+        <!--ServiceLoader 这里是给 UserFactory 使用的，需要显示配置-->
         <property name="serviceType" value="org.geekbang.thinking.in.spring.bean.factory.UserFactory" />
     </bean>
 </beans>

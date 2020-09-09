@@ -29,7 +29,6 @@ import javax.annotation.PreDestroy;
  * User Holder 类
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
- * @since
  */
 public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, EnvironmentAware,
         InitializingBean, SmartInitializingSingleton, DisposableBean {
@@ -69,7 +68,7 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
     }
 
     /**
-     * 依赖于注解驱动
+     * 依赖于注解驱动：在初始化 afterPropertiesSet 之前
      * 当前场景：BeanFactory
      */
     @PostConstruct
@@ -79,6 +78,11 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
         System.out.println("initPostConstruct() = " + description);
     }
 
+    /**
+     * 初始化
+     *
+     * @throws Exception
+     */
     @Override
     public void afterPropertiesSet() throws Exception {
         // initPostConstruct V4 -> afterPropertiesSet V5
@@ -87,7 +91,7 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
     }
 
     /**
-     * 自定义初始化方法
+     * 自定义初始化方法: 在 afterPropertiesSet 之后
      */
     public void init() {
         // initPostConstruct V5 -> afterPropertiesSet V6
@@ -95,6 +99,9 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
         System.out.println("init() = " + description);
     }
 
+    /**
+     * 销毁的顺序是: preDestroy > destroy > 自定义销毁方法（doDestroy）
+     */
     @PreDestroy
     public void preDestroy() {
         // postProcessBeforeDestruction : The user holder V9
@@ -152,6 +159,7 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
         System.out.println("afterSingletonsInstantiated() = " + description);
     }
 
+    @Override
     protected void finalize() throws Throwable {
         System.out.println("The UserHolder is finalized...");
     }

@@ -28,10 +28,17 @@ import org.springframework.util.ObjectUtils;
  * TODO
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
- * @since
  */
 class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
+    /**
+     * 实例化
+     *
+     * @param beanClass
+     * @param beanName
+     * @return
+     * @throws BeansException
+     */
     @Override
     public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
         if (ObjectUtils.nullSafeEquals("superUser", beanName) && SuperUser.class.equals(beanClass)) {
@@ -79,7 +86,7 @@ class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPos
             // 如果存在 "description" 属性配置的话
             if (propertyValues.contains("description")) {
                 // PropertyValue value 是不可变的
-//                    PropertyValue propertyValue = propertyValues.getPropertyValue("description");
+                // PropertyValue propertyValue = propertyValues.getPropertyValue("description");
                 propertyValues.removePropertyValue("description");
                 propertyValues.addPropertyValue("description", "The user holder V2");
             }
@@ -89,11 +96,19 @@ class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPos
         return null;
     }
 
+    /**
+     * 初始化
+     *
+     * @param bean
+     * @param beanName
+     * @return
+     * @throws BeansException
+     */
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         if (ObjectUtils.nullSafeEquals("userHolder", beanName) && UserHolder.class.equals(bean.getClass())) {
             UserHolder userHolder = (UserHolder) bean;
-            // UserHolder description = "The user holder V2"
+            // 目前 UserHolder description = "The user holder V2"
             userHolder.setDescription("The user holder V3");
         }
         return bean;

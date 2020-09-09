@@ -25,29 +25,31 @@ import java.util.stream.Stream;
 
 /**
  * JavaBeans 示例
+ * <p>
+ * Introspector: java 自省类
+ * PropertyDescriptor: 在 spring 中应用非常广泛
  *
- * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
+ * @author <a href="mailto :mercyblitz@gmail.com">Mercy</a>
  * @since
  */
 public class JavaBeansDemo {
 
     public static void main(String[] args) throws IntrospectionException {
-
-        // stopClass 排除（截止）类
+        // BeanInfo beanInfo = Introspector.getBeanInfo(User.class);
+        // stopClass 排除（截止）类:即可以排除上一行来自于 Object#getClass() 方法对下面打印结果影响
         BeanInfo beanInfo = Introspector.getBeanInfo(User.class, Object.class);
-        // 属性描述符 PropertyDescriptor
 
-        // 所有 Java 类均继承 java.lang.Object
-        // class 属性来自于 Object#getClass() 方法
+        // 属性描述符 PropertyDescriptor
+        // 所有 Java 类均继承 java.lang.Object： class 属性来自于 Object#getClass() 方法
         Stream.of(beanInfo.getPropertyDescriptors())
                 .forEach(propertyDescriptor -> {
-//                    propertyDescriptor.getReadMethod(); // Getter 方法
-//                    propertyDescriptor.getWriteMethod(); // Setter 方法
+//                    propertyDescriptor.getReadMethod(); // Getter 方法(读方法)
+//                    propertyDescriptor.getWriteMethod(); // Setter 方法(写方法)
                     System.out.println(propertyDescriptor);
                 });
 
+        System.out.println("-----------------");
         // 输出 User 定义的方法 MethodDescriptor
         Stream.of(beanInfo.getMethodDescriptors()).forEach(System.out::println);
-
     }
 }

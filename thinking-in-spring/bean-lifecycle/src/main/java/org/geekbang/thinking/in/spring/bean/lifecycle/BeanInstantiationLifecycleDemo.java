@@ -40,7 +40,8 @@ public class BeanInstantiationLifecycleDemo {
     private static void executeBeanFactory() {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         // 方法一：添加 BeanPostProcessor 实现 MyInstantiationAwareBeanPostProcessor
-        // beanFactory.addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
+//         beanFactory.addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
+
         // 方法二：将 MyInstantiationAwareBeanPostProcessor 作为 Bean 注册
         // 基于 XML 资源 BeanDefinitionReader 实现
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
@@ -60,6 +61,7 @@ public class BeanInstantiationLifecycleDemo {
     }
 
     private static void executeApplicationContext() {
+        // 当 ApplicationContext 时，会回调 UserHolder 类的EnvironmentAware； beanFactory 不会回调
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext();
         String[] locations = {"META-INF/dependency-lookup-context.xml", "META-INF/bean-constructor-dependency-injection.xml"};
         applicationContext.setConfigLocations(locations);

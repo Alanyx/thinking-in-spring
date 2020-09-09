@@ -18,8 +18,6 @@ package org.geekbang.thinking.in.spring.bean.definition;
 
 import org.geekbang.thinking.in.spring.bean.factory.DefaultUserFactory;
 import org.geekbang.thinking.in.spring.bean.factory.UserFactory;
-import org.geekbang.thinking.in.spring.ioc.overview.domain.User;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -27,13 +25,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.Iterator;
 import java.util.ServiceLoader;
 
-import static java.util.ServiceLoader.load;
-
 /**
  * 特殊的 Bean 实例化示例
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
- * @since
  */
 public class SpecialBeanInstantiationDemo {
 
@@ -44,22 +39,24 @@ public class SpecialBeanInstantiationDemo {
         // 通过 ApplicationContext 获取 AutowireCapableBeanFactory
         AutowireCapableBeanFactory beanFactory = applicationContext.getAutowireCapableBeanFactory();
 
+        // 特殊实例化 bean 方式1
         ServiceLoader<UserFactory> serviceLoader = beanFactory.getBean("userFactoryServiceLoader", ServiceLoader.class);
 
         displayServiceLoader(serviceLoader);
 
 //        demoServiceLoader();
 
+        // 特殊实例化 bean 方式2
         // 创建 UserFactory 对象，通过 AutowireCapableBeanFactory
         UserFactory userFactory = beanFactory.createBean(DefaultUserFactory.class);
         System.out.println(userFactory.createUser());
 
     }
 
-    public static void demoServiceLoader() {
-        ServiceLoader<UserFactory> serviceLoader = load(UserFactory.class, Thread.currentThread().getContextClassLoader());
-        displayServiceLoader(serviceLoader);
-    }
+//    public static void demoServiceLoader() {
+//        ServiceLoader<UserFactory> serviceLoader = load(UserFactory.class, Thread.currentThread().getContextClassLoader());
+//        displayServiceLoader(serviceLoader);
+//    }
 
     private static void displayServiceLoader(ServiceLoader<UserFactory> serviceLoader) {
         Iterator<UserFactory> iterator = serviceLoader.iterator();
