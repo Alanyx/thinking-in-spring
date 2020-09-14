@@ -27,7 +27,10 @@ import java.util.Map;
 
 /**
  * 依赖查找示例
- * 1. 通过名称的方式来查找
+ * <p>
+ * 1.根据 Bean 名称查找
+ * 2.根据 Bean 类型查找
+ * 3.根据 Java 注解查找对象
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
@@ -35,18 +38,24 @@ import java.util.Map;
 public class DependencyLookupDemo {
 
     public static void main(String[] args) {
-        // 配置 XML 配置文件
+        // 配置 XML 配置文件：见 dependency-lookup-context.xml(可从官方文档上 copy 一个 xml)
         // 启动 Spring 应用上下文
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context.xml");
-        // 按照类型查找
-        lookupByType(beanFactory);
-        // 按照类型查找结合对象
-        lookupCollectionByType(beanFactory);
-        // 通过注解查找对象
-        lookupByAnnotationType(beanFactory);
 
+        // 1.根据 Bean 名称查找---------------------------------------------------------------
+        // 实时查找(直接方式)
 //        lookupInRealTime(beanFactory);
+        // 延时查找(间接方式)
 //        lookupInLazy(beanFactory);
+
+        // 2.根据 Bean 类型查找---------------------------------------------------------------
+        // 单个 Bean 对象
+//        lookupByType(beanFactory);
+        // 集合 Bean 对象
+//        lookupCollectionByType(beanFactory);
+
+        // 3.根据 Java 注解查找对象---------------------------------------------------------------
+        lookupByAnnotationType(beanFactory);
     }
 
     private static void lookupByAnnotationType(BeanFactory beanFactory) {
@@ -60,6 +69,7 @@ public class DependencyLookupDemo {
     private static void lookupCollectionByType(BeanFactory beanFactory) {
         if (beanFactory instanceof ListableBeanFactory) {
             ListableBeanFactory listableBeanFactory = (ListableBeanFactory) beanFactory;
+            // id 为key,user 为 value
             Map<String, User> users = listableBeanFactory.getBeansOfType(User.class);
             System.out.println("查找到的所有的 User 集合对象：" + users);
         }

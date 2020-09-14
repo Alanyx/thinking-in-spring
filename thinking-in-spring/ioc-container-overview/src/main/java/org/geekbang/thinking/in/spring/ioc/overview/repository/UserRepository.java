@@ -45,7 +45,6 @@ public class UserRepository {
         this.users = users;
     }
 
-
     public void setBeanFactory(BeanFactory beanFactory) {
         this.beanFactory = beanFactory;
     }

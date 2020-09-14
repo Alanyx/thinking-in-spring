@@ -24,7 +24,7 @@ import org.geekbang.thinking.in.spring.ioc.overview.annotation.Super;
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
  */
-@Super
+@Super// 加上注解区分 user
 public class SuperUser extends User {
 
     private String address;

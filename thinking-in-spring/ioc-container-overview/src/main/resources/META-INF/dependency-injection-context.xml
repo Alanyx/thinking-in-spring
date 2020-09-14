@@ -6,6 +6,9 @@
         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
+<!--    需要引用 xmlns:util="http://www.springframework.org/schema/util"
+和 http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd-->
+
     <!-- 通过导入复用 dependency-lookup-context.xml -->
     <import resource="dependency-lookup-context.xml"/>
 
