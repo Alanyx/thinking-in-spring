@@ -19,8 +19,6 @@ package org.geekbang.thinking.in.spring.ioc.overview.container;
 import org.geekbang.thinking.in.spring.ioc.overview.domain.User;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -42,12 +40,15 @@ public class AnnotationApplicationContextAsIoCContainerDemo {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 将当前类 AnnotationApplicationContextAsIoCContainerDemo 作为配置类（Configuration Class）
         applicationContext.register(AnnotationApplicationContextAsIoCContainerDemo.class);
-        // 启动应用上下文
+
+        /// todo: 此处如果不启用应用上下文，依赖查找将为空
+        // 启动应用上下文（实际上对应启动）
         applicationContext.refresh();
+
         // 依赖查找集合对象
         lookupCollectionByType(applicationContext);
 
-        // 关闭应用上下文
+        // 关闭应用上下文（实际上对应停止）
         applicationContext.close();
 
     }

@@ -38,9 +38,10 @@ public class BeanFactoryAsIoCContainerDemo {
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
         // XML 配置文件 ClassPath 路径
         String location = "classpath:/META-INF/dependency-lookup-context.xml";
-        // 加载配置
+        // 加载配置： beanDefinitionsCount 是定义的 bean 个数
         int beanDefinitionsCount = reader.loadBeanDefinitions(location);
         System.out.println("Bean 定义加载的数量：" + beanDefinitionsCount);
+
         // 依赖查找集合对象
         lookupCollectionByType(beanFactory);
     }

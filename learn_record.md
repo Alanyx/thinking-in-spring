@@ -24,8 +24,31 @@
 
 - ObjectFactory、BeanFactory、FactoryBean 有什么区别？
 
-#### 202020914(23-24)
+### 202020914(23-26)
 
 #### 23/24
 
 >  代码：org.geekbang.thinking.in.spring.ioc.overview.dependency
+
+### 202020915(27-2)
+
+#### 28
+
+> 代码: org.geekbang.thinking.in.spring.ioc.overview.container
+
+#### 29
+
+>[源码简要分析(查看概要主体步骤即可)]
+>
+> applicationContext.refresh();
+>
+>applicationContext.close();
+
+- 复习 java 的 hook (勾子函数)，并代码实践练习
+
+#### 30
+
+- 复习工厂方法，最好在代码中去实操练习
+
+- 学习 FactoryBean 的源码，理解"创建 Bean 的一种方式，帮助实现复杂的初始化逻辑"
+
