@@ -9,6 +9,7 @@
           factory-method="createUser"/>
 
    <!-- 2.实例（Bean）方法实例化 Bean -->
+    <!--factory-bean: 指定 factory 实现-->
    <bean id="user-by-instance-method" factory-bean="userFactory" factory-method="createUser"/>
 
    <!-- 3.FactoryBean实例化 Bean -->

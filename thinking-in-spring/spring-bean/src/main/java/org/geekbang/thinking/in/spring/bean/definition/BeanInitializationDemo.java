@@ -34,24 +34,30 @@ public class BeanInitializationDemo {
     public static void main(String[] args) {
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        // 注册 Configuration Class（配置类）
+        // 注册 Configuration Class（注册配置类）
         applicationContext.register(BeanInitializationDemo.class);
+
         // 启动 Spring 应用上下文
         applicationContext.refresh();
-        // todo 【备注】非延迟初始化在 Spring 应用上下文启动完成后，被初始化
+
+        // todo 非延迟时初始化(如@PostConstruct)在 Spring 应用上下文启动完成后，被初始化
         System.out.println("Spring 应用上下文已启动...");
-        // 依赖查找 UserFactory(触发延迟的 UserFactory 加载)
+        // todo  依赖查找 UserFactory(触发延迟的 UserFactory 加载)
         UserFactory userFactory = applicationContext.getBean(UserFactory.class);
         System.out.println(userFactory);
         System.out.println("Spring 应用上下文准备关闭...");
-        // 关闭 Spring 应用上下文
+
+        // 关闭 Spring 应用上下文: 触发调用销毁方法
         applicationContext.close();
         System.out.println("Spring 应用上下文已关闭...");
     }
 
     @Bean(initMethod = "initUserFactory", destroyMethod = "doDestroy")
-    @Lazy(value = true)
+    @Lazy
     public UserFactory userFactory() {
         return new DefaultUserFactory();
     }
+    /**
+     * 延迟加载与非延迟加载的区别: 初始化的时机不同，可以观察日志打印
+     */
 }

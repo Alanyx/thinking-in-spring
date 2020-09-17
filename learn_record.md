@@ -30,7 +30,7 @@
 
 >  代码：org.geekbang.thinking.in.spring.ioc.overview.dependency
 
-### 202020915(27-2)
+### 202020915(27-34)
 
 #### 28
 
@@ -52,3 +52,59 @@
 
 - 学习 FactoryBean 的源码，理解"创建 Bean 的一种方式，帮助实现复杂的初始化逻辑"
 
+#### 31
+
+#### 32
+
+- 简要浏览 BeanDefinitionBuilder 源码
+
+> 示例代码: org.geekbang.thinking.in.spring.bean.definition.BeanDefinitionCreationDemo
+
+#### 33 
+
+- 浏览 BeanNameGenerator 源码，查看默认实现 DefaultBeanNameGenerator
+
+> DefaultBeanNameGenerator 使用了委派的方式实现
+
+#### 34
+
+> 示例代码: org.geekbang.thinking.in.spring.bean.definition.BeanAliasDemo
+
+### 202020916(35-37)
+
+#### 35
+
+> 示例代码: org.geekbang.thinking.in.spring.bean.definition.AnnotationBeanDefinitionDemo
+
+#### 36
+
+> 示例代码:org.geekbang.thinking.in.spring.bean.definition.BeanInstantiationDemo 和 factory 目录下文件
+
+
+> 示例代码:org.geekbang.thinking.in.spring.bean.definition.SpecialBeanInstantiationDemo
+
+#### 37
+
+> 示例代码（@PostConstruct 等注解初始化）:org.geekbang.thinking.in.spring.bean.factory.DefaultUserFactory
+
+### 202020917(38-)
+
+#### 38
+
+> 示例代码 org.geekbang.thinking.in.spring.bean.definition.BeanInitializationDemo
+
+#### 39
+
+> 示例代码（@PostConstruct 等注解初始化）:org.geekbang.thinking.in.spring.bean.factory.DefaultUserFactory
+
+- 阅读 applicationContext.close(); 源码，查看什么时候调用了销毁的方法
+
+- 查看 @PostConstruct 的源码调用，理解工作原理
+
+#### 40
+
+> 示例代码（org.geekbang.thinking.in.spring.bean.definition.BeanGarbageCollectionDemo + DefaultUserFactory(finalize)
+
+#### 41
+
+> 示例代码 org.geekbang.thinking.in.spring.bean.definition.SingletonBeanRegistrationDemo

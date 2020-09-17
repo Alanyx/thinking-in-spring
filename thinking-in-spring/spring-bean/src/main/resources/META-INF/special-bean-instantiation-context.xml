@@ -6,6 +6,8 @@
 
     <bean id="userFactoryServiceLoader" class="org.springframework.beans.factory.serviceloader.ServiceLoaderFactoryBean">
         <!--ServiceLoader 这里是给 UserFactory 使用的，需要显示配置-->
+        <!--具体可以查看源码：AbstractServiceLoaderBasedFactoryBean 的 serviceType 属性，对应
+        AbstractFactoryBean#getObject()-->
         <property name="serviceType" value="org.geekbang.thinking.in.spring.bean.factory.UserFactory" />
     </bean>
 </beans>

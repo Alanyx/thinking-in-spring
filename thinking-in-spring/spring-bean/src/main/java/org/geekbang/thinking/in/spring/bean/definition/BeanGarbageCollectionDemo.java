@@ -16,7 +16,6 @@
  */
 package org.geekbang.thinking.in.spring.bean.definition;
 
-import org.geekbang.thinking.in.spring.bean.factory.UserFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -36,6 +35,7 @@ public class BeanGarbageCollectionDemo {
         applicationContext.refresh();
         // 关闭 Spring 应用上下文
         applicationContext.close();
+
         Thread.sleep(5000L);
         // 强制触发 GC
         System.gc();

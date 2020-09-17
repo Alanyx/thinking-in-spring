@@ -24,6 +24,10 @@ import javax.annotation.PreDestroy;
 
 /**
  * 默认 {@link UserFactory} 实现
+ * <p>
+ * 实现 spring 的接口用于初始化:InitializingBean
+ * <p>
+ * 初始化顺序：@PostConstruct --> afterPropertiesSet() --> 自定义初始化方法
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
@@ -36,13 +40,16 @@ public class DefaultUserFactory implements UserFactory, InitializingBean, Dispos
         System.out.println("@PostConstruct : UserFactory 初始化中...");
     }
 
-    public void initUserFactory() {
-        System.out.println("自定义初始化方法 initUserFactory() : UserFactory 初始化中...");
-    }
-
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("InitializingBean#afterPropertiesSet() : UserFactory 初始化中...");
+    }
+
+    /**
+     * todo 自定义初始化方法实现见: 可断点查看AbstractBeanDefinition#setInitMethodName()
+     */
+    public void initUserFactory() {
+        System.out.println("自定义初始化方法 initUserFactory() : UserFactory 初始化中...");
     }
 
     @PreDestroy
@@ -59,6 +66,11 @@ public class DefaultUserFactory implements UserFactory, InitializingBean, Dispos
         System.out.println("自定义销毁方法 doDestroy() : UserFactory 销毁中...");
     }
 
+    /**
+     * 不一定每次都会被回调
+     *
+     * @throws Throwable
+     */
     @Override
     public void finalize() throws Throwable {
         System.out.println("当前 DefaultUserFactory 对象正在被垃圾回收...");

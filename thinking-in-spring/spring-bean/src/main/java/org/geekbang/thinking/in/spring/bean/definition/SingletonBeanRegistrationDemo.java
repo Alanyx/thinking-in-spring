@@ -18,7 +18,6 @@ package org.geekbang.thinking.in.spring.bean.definition;
 
 import org.geekbang.thinking.in.spring.bean.factory.DefaultUserFactory;
 import org.geekbang.thinking.in.spring.bean.factory.UserFactory;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.SingletonBeanRegistry;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -33,11 +32,14 @@ public class SingletonBeanRegistrationDemo {
     public static void main(String[] args) throws InterruptedException {
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
+
         // 创建一个外部 UserFactory 对象
         UserFactory userFactory = new DefaultUserFactory();
+        // SingletonBeanRegistry 重要，需要记住registerSingleton()
         SingletonBeanRegistry singletonBeanRegistry = applicationContext.getBeanFactory();
         // 注册外部单例对象
         singletonBeanRegistry.registerSingleton("userFactory", userFactory);
+
         // 启动 Spring 应用上下文
         applicationContext.refresh();
 
