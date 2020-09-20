@@ -87,7 +87,7 @@
 
 > 示例代码（@PostConstruct 等注解初始化）:org.geekbang.thinking.in.spring.bean.factory.DefaultUserFactory
 
-### 202020917(38-)
+### 202020917(38-41)
 
 #### 38
 
@@ -108,3 +108,23 @@
 #### 41
 
 > 示例代码 org.geekbang.thinking.in.spring.bean.definition.SingletonBeanRegistrationDemo
+
+### 202020916(42-)
+
+#### 42
+
+- 查资料，了解和简要小结 java 的 JNDI、BeanContext
+
+#### 43
+
+> 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.ObjectProviderDemo
+
+#### 44
+
+- 查资料， 了解  org.springframework.beans.factory.ListableBeanFactory 基本源码
+
+#### 45 
+
+- 查资料，了解 HierarchicalBeanFactory 作用
+
+> 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.HierarchicalDependencyLookupDemo

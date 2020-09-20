@@ -44,15 +44,15 @@ public class DependencyLookupDemo {
 
         // 1.根据 Bean 名称查找---------------------------------------------------------------
         // 实时查找(直接方式)
-//        lookupInRealTime(beanFactory);
+        lookupInRealTime(beanFactory);
         // 延时查找(间接方式)
-//        lookupInLazy(beanFactory);
+        lookupInLazy(beanFactory);
 
         // 2.根据 Bean 类型查找---------------------------------------------------------------
         // 单个 Bean 对象
-//        lookupByType(beanFactory);
+        lookupByType(beanFactory);
         // 集合 Bean 对象
-//        lookupCollectionByType(beanFactory);
+        lookupCollectionByType(beanFactory);
 
         // 3.根据 Java 注解查找对象---------------------------------------------------------------
         lookupByAnnotationType(beanFactory);

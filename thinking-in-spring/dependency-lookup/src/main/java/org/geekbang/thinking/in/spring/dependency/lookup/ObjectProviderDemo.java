@@ -34,17 +34,29 @@ public class ObjectProviderDemo { // @Configuration 是非必须注解
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 将当前类 ObjectProviderDemo 作为配置类（Configuration Class）
+        // @Bean 定义在当前类里，当前类本身就是配置类，可以不写 @Configuration 注解
         applicationContext.register(ObjectProviderDemo.class);
         // 启动应用上下文
         applicationContext.refresh();
+
         // 依赖查找集合对象
         lookupByObjectProvider(applicationContext);
-        lookupIfAvailable(applicationContext);
-        lookupByStreamOps(applicationContext);
+//        lookupIfAvailable(applicationContext);
+//        lookupByStreamOps(applicationContext);
 
         // 关闭应用上下文
         applicationContext.close();
+    }
 
+    @Bean
+    @Primary
+    public String helloWorld() { // 方法名就是 Bean 名称 = "helloWorld"
+        return "Hello,World";
+    }
+
+    @Bean
+    public String message() {
+        return "Message";
     }
 
     private static void lookupByStreamOps(AnnotationConfigApplicationContext applicationContext) {
@@ -61,17 +73,6 @@ public class ObjectProviderDemo { // @Configuration 是非必须注解
         ObjectProvider<User> userObjectProvider = applicationContext.getBeanProvider(User.class);
         User user = userObjectProvider.getIfAvailable(User::createUser);
         System.out.println("当前 User 对象：" + user);
-    }
-
-    @Bean
-    @Primary
-    public String helloWorld() { // 方法名就是 Bean 名称 = "helloWorld"
-        return "Hello,World";
-    }
-
-    @Bean
-    public String message() {
-        return "Message";
     }
 
     private static void lookupByObjectProvider(AnnotationConfigApplicationContext applicationContext) {

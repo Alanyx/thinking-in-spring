@@ -39,22 +39,23 @@ public class HierarchicalDependencyLookupDemo {
 
         // 1. 获取 HierarchicalBeanFactory <- ConfigurableBeanFactory <- ConfigurableListableBeanFactory
         ConfigurableListableBeanFactory beanFactory = applicationContext.getBeanFactory();
-//        System.out.println("当前 BeanFactory 的 Parent BeanFactory ： " + beanFactory.getParentBeanFactory());
+        // 此时没有设置 parent BeanFactory,为 null
+        System.out.println("1.当前 BeanFactory 的 Parent BeanFactory ： " + beanFactory.getParentBeanFactory());
 
         // 2. 设置 Parent BeanFactory
         HierarchicalBeanFactory parentBeanFactory = createParentBeanFactory();
         beanFactory.setParentBeanFactory(parentBeanFactory);
-//        System.out.println("当前 BeanFactory 的 Parent BeanFactory ： " + beanFactory.getParentBeanFactory());
+        System.out.println("2.当前 BeanFactory 的 Parent BeanFactory ： " + beanFactory.getParentBeanFactory());
 
-        displayContainsLocalBean(beanFactory, "user");
-        displayContainsLocalBean(parentBeanFactory, "user");
+        // LocalBean：LocalBean 指当前 BeanFactory 的 Bean,不包含父类的 Bean
+        displayContainsLocalBean(beanFactory, "user"); // false
+        displayContainsLocalBean(parentBeanFactory, "user");// true
 
-        displayContainsBean(beanFactory, "user");
-        displayContainsBean(parentBeanFactory, "user");
+        displayContainsBean(beanFactory, "user");// true
+        displayContainsBean(parentBeanFactory, "user");// true
 
         // 启动应用上下文
         applicationContext.refresh();
-
         // 关闭应用上下文
         applicationContext.close();
 
@@ -65,6 +66,9 @@ public class HierarchicalDependencyLookupDemo {
                 containsBean(beanFactory, beanName));
     }
 
+    /**
+     * 使用递归查询是否包含 Bean
+     */
     private static boolean containsBean(HierarchicalBeanFactory beanFactory, String beanName) {
         BeanFactory parentBeanFactory = beanFactory.getParentBeanFactory();
         if (parentBeanFactory instanceof HierarchicalBeanFactory) {
@@ -73,6 +77,7 @@ public class HierarchicalDependencyLookupDemo {
                 return true;
             }
         }
+        // 判断当前的 beanFactory 是否包含本地 Bean
         return beanFactory.containsLocalBean(beanName);
     }
 
@@ -81,6 +86,11 @@ public class HierarchicalDependencyLookupDemo {
                 beanFactory.containsLocalBean(beanName));
     }
 
+    /**
+     * 创建父类 BeanFactory(此处使用 XML 方式创建上下文)
+     *
+     * @return
+     */
     private static ConfigurableListableBeanFactory createParentBeanFactory() {
         // 创建 BeanFactory 容器
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
