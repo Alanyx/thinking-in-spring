@@ -26,7 +26,6 @@ import org.springframework.context.annotation.Primary;
  * 通过 {@link ObjectProvider} 进行依赖查找
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
- * @since
  */
 public class ObjectProviderDemo { // @Configuration 是非必须注解
 
@@ -41,8 +40,9 @@ public class ObjectProviderDemo { // @Configuration 是非必须注解
 
         // 依赖查找集合对象
         lookupByObjectProvider(applicationContext);
-//        lookupIfAvailable(applicationContext);
-//        lookupByStreamOps(applicationContext);
+
+        lookupIfAvailable(applicationContext);
+        lookupByStreamOps(applicationContext);
 
         // 关闭应用上下文
         applicationContext.close();
@@ -61,21 +61,28 @@ public class ObjectProviderDemo { // @Configuration 是非必须注解
 
     private static void lookupByStreamOps(AnnotationConfigApplicationContext applicationContext) {
         ObjectProvider<String> objectProvider = applicationContext.getBeanProvider(String.class);
+
+        // 打印方式1:foreach
 //        Iterable<String> stringIterable = objectProvider;
 //        for (String string : stringIterable) {
 //            System.out.println(string);
 //        }
+
+        // 打印方式2: Lambada
         // Stream -> Method reference
         objectProvider.stream().forEach(System.out::println);
     }
 
     private static void lookupIfAvailable(AnnotationConfigApplicationContext applicationContext) {
         ObjectProvider<User> userObjectProvider = applicationContext.getBeanProvider(User.class);
+        // 因为该示例没有 User Bean,因此使用该方式获取(作为兜底的方式)
         User user = userObjectProvider.getIfAvailable(User::createUser);
+        // User user = userObjectProvider.getIfAvailable(() -> User.createUser());
         System.out.println("当前 User 对象：" + user);
     }
 
     private static void lookupByObjectProvider(AnnotationConfigApplicationContext applicationContext) {
+        // 泛型可以是对象，也可以是基本类型
         ObjectProvider<String> objectProvider = applicationContext.getBeanProvider(String.class);
         System.out.println(objectProvider.getObject());
     }

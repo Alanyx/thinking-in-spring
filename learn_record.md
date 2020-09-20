@@ -109,7 +109,7 @@
 
 > 示例代码 org.geekbang.thinking.in.spring.bean.definition.SingletonBeanRegistrationDemo
 
-### 202020916(42-)
+### 202020916(42-45)
 
 #### 42
 
@@ -117,7 +117,7 @@
 
 #### 43
 
-> 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.ObjectProviderDemo
+> 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.ObjectProviderDemo#lookupByObjectProvider
 
 #### 44
 
@@ -128,3 +128,29 @@
 - 查资料，了解 HierarchicalBeanFactory 作用
 
 > 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.HierarchicalDependencyLookupDemo
+
+### 202020920(46-)
+
+#### 46
+ 
+- 查资料，动手实践 java 8 中的 Lambada 表达式(如 Function、Consumer、Supplier 等)
+
+> 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.ObjectProviderDemo#其他方法
+
+#### 47
+
+> 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.TypeSafetyDependencyLookupDemo
+
+#### 48
+
+> 示例代码 无，可以逐一查看 ppt 给定的类了解基本情况
+
+#### 49
+
+异常分为非检查异常(runtime exception)和检查异常(需要 try catch)
+
+> 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.NoUniqueBeanDefinitionExceptionDemo
+
+> 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.BeanInstantiationExceptionDemo
+
+> 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.BeanCreationExceptionDemo

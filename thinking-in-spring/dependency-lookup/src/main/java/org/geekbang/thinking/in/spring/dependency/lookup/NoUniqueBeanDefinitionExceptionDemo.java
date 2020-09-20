@@ -33,7 +33,6 @@ public class NoUniqueBeanDefinitionExceptionDemo {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 将当前类 NoUniqueBeanDefinitionExceptionDemo 作为配置类（Configuration Class）
         applicationContext.register(NoUniqueBeanDefinitionExceptionDemo.class);
-        // 启动应用上下文
         applicationContext.refresh();
 
         try {
@@ -46,7 +45,6 @@ public class NoUniqueBeanDefinitionExceptionDemo {
                     e.getMessage());
         }
 
-        // 关闭应用上下文
         applicationContext.close();
     }
 

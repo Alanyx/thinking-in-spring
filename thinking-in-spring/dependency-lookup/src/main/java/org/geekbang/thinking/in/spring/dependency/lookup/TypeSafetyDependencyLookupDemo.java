@@ -25,10 +25,9 @@ import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
- * 类型安全 依赖查找示例
+ * 「类型安全」依赖查找示例
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
- * @since
  */
 public class TypeSafetyDependencyLookupDemo {
 
@@ -40,17 +39,20 @@ public class TypeSafetyDependencyLookupDemo {
         // 启动应用上下文
         applicationContext.refresh();
 
-        // 演示 BeanFactory#getBean 方法的安全性
+        // 单一类型查找-----------------------------------------------------
+        // 演示 BeanFactory#getBean 方法的安全性: 不安全的- NoSuchBeanDefinitionException
         displayBeanFactoryGetBean(applicationContext);
-        // 演示 ObjectFactory#getObject 方法的安全性
+        // 演示 ObjectFactory#getObject 方法的安全性: 不安全的- NoSuchBeanDefinitionException
         displayObjectFactoryGetObject(applicationContext);
-        // 演示 ObjectProvider#getIfAvaiable 方法的安全性
+        // 演示 ObjectProvider#getIfAvaiable 方法的安全性:安全的
         displayObjectProviderIfAvailable(applicationContext);
 
-        // 演示 ListableBeanFactory#getBeansOfType 方法的安全性
+        // 集合类型查找-----------------------------------------------------
+        // 演示 ListableBeanFactory#getBeansOfType 方法的安全性:安全的
         displayListableBeanFactoryGetBeansOfType(applicationContext);
-        // 演示 ObjectProvider Stream 操作的安全性
+        // 演示 ObjectProvider Stream 操作的安全性:安全的
         displayObjectProviderStreamOps(applicationContext);
+
 
         // 关闭应用上下文
         applicationContext.close();
@@ -71,11 +73,12 @@ public class TypeSafetyDependencyLookupDemo {
     }
 
     private static void displayObjectFactoryGetObject(AnnotationConfigApplicationContext applicationContext) {
-        // ObjectProvider is ObjectFactory
+        // ObjectProvider is ObjectFactory (继承的关系)
         ObjectFactory<User> userObjectFactory = applicationContext.getBeanProvider(User.class);
         printBeansException("displayObjectFactoryGetObject", () -> userObjectFactory.getObject());
     }
 
+    // NoSuchBeanDefinitionException
     public static void displayBeanFactoryGetBean(BeanFactory beanFactory) {
         printBeansException("displayBeanFactoryGetBean", () -> beanFactory.getBean(User.class));
     }

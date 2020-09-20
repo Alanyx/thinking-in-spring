@@ -48,13 +48,19 @@ public class BeanCreationExceptionDemo {
 
     static class POJO implements InitializingBean {
 
-        @PostConstruct // CommonAnnotationBeanPostProcessor
+        /**
+         * 比 afterPropertiesSet 先执行
+         * @throws Throwable
+         */
+        @PostConstruct // CommonAnnotationBeanPostProcessor 中处理该注解
         public void init() throws Throwable {
+            // 显示抛出异常
             throw new Throwable("init() : For purposes...");
         }
 
         @Override
         public void afterPropertiesSet() throws Exception {
+            // 显示抛出异常
             throw new Exception("afterPropertiesSet() : For purposes...");
         }
     }
