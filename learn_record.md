@@ -129,7 +129,7 @@
 
 > 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.HierarchicalDependencyLookupDemo
 
-### 202020920(46-)
+### 202020920(46-50)
 
 #### 46
  
@@ -154,3 +154,27 @@
 > 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.BeanInstantiationExceptionDemo
 
 > 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.BeanCreationExceptionDemo
+
+#### 50
+
+无
+
+### 202020921(51-)
+
+#### 51
+
+无
+
+#### 52
+
+无
+
+#### 53
+
+> 简单了解代码 org.springframework.beans.factory.annotation.Autowire
+> 和 org.springframework.beans.factory.config.AutowireCapableBeanFactory 看看自动绑定的模式
+
+#### 54
+
+- 阅读官方文档，查看 Autowring 的不足 
+https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/core.html#beans-autowired-exceptions
