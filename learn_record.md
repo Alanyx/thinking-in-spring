@@ -20,6 +20,8 @@
 
 #### 22
 
+[done]
+
 > 代码：org.geekbang.thinking.in.spring.ioc.overview.dependency
 
 - ObjectFactory、BeanFactory、FactoryBean 有什么区别？
@@ -28,15 +30,21 @@
 
 #### 23/24
 
+[done]
+
 >  代码：org.geekbang.thinking.in.spring.ioc.overview.dependency
 
 ### 202020915(27-34)
 
 #### 28
 
+[done]
+
 > 代码: org.geekbang.thinking.in.spring.ioc.overview.container
 
 #### 29
+
+[done]
 
 >[源码简要分析(查看概要主体步骤即可)]
 >
@@ -48,13 +56,19 @@
 
 #### 30
 
+[done]
+
 - 复习工厂方法，最好在代码中去实操练习
 
 - 学习 FactoryBean 的源码，理解"创建 Bean 的一种方式，帮助实现复杂的初始化逻辑"
 
 #### 31
 
+[done]
+
 #### 32
+
+[done]
 
 - 简要浏览 BeanDefinitionBuilder 源码
 
@@ -62,11 +76,17 @@
 
 #### 33 
 
+[done]
+
+[done]
+
 - 浏览 BeanNameGenerator 源码，查看默认实现 DefaultBeanNameGenerator
 
 > DefaultBeanNameGenerator 使用了委派的方式实现
 
 #### 34
+
+[done]
 
 > 示例代码: org.geekbang.thinking.in.spring.bean.definition.BeanAliasDemo
 
@@ -74,16 +94,23 @@
 
 #### 35
 
+[done]
+
 > 示例代码: org.geekbang.thinking.in.spring.bean.definition.AnnotationBeanDefinitionDemo
 
 #### 36
 
+[done]
+
 > 示例代码:org.geekbang.thinking.in.spring.bean.definition.BeanInstantiationDemo 和 factory 目录下文件
 
+[done]
 
 > 示例代码:org.geekbang.thinking.in.spring.bean.definition.SpecialBeanInstantiationDemo
 
 #### 37
+
+[done]
 
 > 示例代码（@PostConstruct 等注解初始化）:org.geekbang.thinking.in.spring.bean.factory.DefaultUserFactory
 
@@ -91,9 +118,13 @@
 
 #### 38
 
+[done]
+
 > 示例代码 org.geekbang.thinking.in.spring.bean.definition.BeanInitializationDemo
 
 #### 39
+
+[done]
 
 > 示例代码（@PostConstruct 等注解初始化）:org.geekbang.thinking.in.spring.bean.factory.DefaultUserFactory
 
@@ -103,9 +134,13 @@
 
 #### 40
 
+[done]
+
 > 示例代码（org.geekbang.thinking.in.spring.bean.definition.BeanGarbageCollectionDemo + DefaultUserFactory(finalize)
 
 #### 41
+
+[done]
 
 > 示例代码 org.geekbang.thinking.in.spring.bean.definition.SingletonBeanRegistrationDemo
 
