@@ -152,13 +152,19 @@
 
 #### 43
 
+[done]
+
 > 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.ObjectProviderDemo#lookupByObjectProvider
 
 #### 44
 
-- 查资料， 了解  org.springframework.beans.factory.ListableBeanFactory 基本源码
+[done]
+
+- 查资料，了解  org.springframework.beans.factory.ListableBeanFactory 基本源码
 
 #### 45 
+
+[done]
 
 - 查资料，了解 HierarchicalBeanFactory 作用
 
@@ -174,13 +180,19 @@
 
 #### 47
 
+[done]
+
 > 示例代码 org.geekbang.thinking.in.spring.dependency.lookup.TypeSafetyDependencyLookupDemo
 
 #### 48
 
+[done]
+
 > 示例代码 无，可以逐一查看 ppt 给定的类了解基本情况
 
 #### 49
+
+[done]
 
 异常分为非检查异常(runtime exception)和检查异常(需要 try catch)
 
@@ -194,7 +206,7 @@
 
 无
 
-### 202020921(51-)
+### 202020921(51-54)
 
 #### 51
 
