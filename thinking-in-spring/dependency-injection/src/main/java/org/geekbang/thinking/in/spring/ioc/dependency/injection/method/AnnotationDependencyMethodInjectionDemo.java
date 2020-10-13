@@ -27,6 +27,8 @@ import javax.annotation.Resource;
 
 /**
  * 基于 Java 注解的依赖方法注入示例
+ * <p>
+ * 忽略方法名，只关注方法参数
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
@@ -37,16 +39,32 @@ public class AnnotationDependencyMethodInjectionDemo {
 
     private UserHolder userHolder2;
 
+    /**
+     * 方式1：可以忽略方法名，只关注方法参数
+     *
+     * @param userHolder
+     */
     @Autowired
     public void init1(UserHolder userHolder) {
         this.userHolder = userHolder;
     }
 
+    /**
+     * 方式2
+     *
+     * @param userHolder2
+     */
     @Resource
     public void init2(UserHolder userHolder2) {
         this.userHolder2 = userHolder2;
     }
 
+    /**
+     * 方式3
+     *
+     * @param user
+     * @return
+     */
     @Bean
     public UserHolder userHolder(User user) {
         return new UserHolder(user);

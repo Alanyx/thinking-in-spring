@@ -237,3 +237,31 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 #### 58
 
 > org.geekbang.thinking.in.spring.ioc.dependency.injection.method
+
+#### 59
+
+> org.geekbang.thinking.in.spring.ioc.dependency.injection.interfaceCallback.AwareInterfaceDependencyInjectionDemo
+
+#### 60
+
+无
+
+#### 61
+
+> org.geekbang.thinking.in.spring.ioc.overview.domain.User 依赖注入的属性（City、Resource）
+>
+> 和对应的 src/main/resources/META-INF/dependency-lookup-context.xml
+
+#### 62
+
+> org.geekbang.thinking.in.spring.ioc.overview.domain.User 依赖注入的属性（City[]、List<City>）
+>
+> 和对应的 src/main/resources/META-INF/dependency-lookup-context.xml
+
+#### 63
+
+> org.geekbang.thinking.in.spring.ioc.dependency.injection.QualifierAnnotationDependencyInjectionDemo
+
+#### 64
+
+> org.geekbang.thinking.in.spring.ioc.dependency.injection.LazyAnnotationDependencyInjectionDemo
