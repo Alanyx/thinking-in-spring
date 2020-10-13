@@ -23,7 +23,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 
 /**
- * 基于 Java 注解的依赖 Setter 方法注入示例
+ * 2.基于 Java 注解的依赖 Setter 方法注入示例
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
@@ -31,32 +31,30 @@ import org.springframework.context.annotation.Bean;
 public class AnnotationDependencySetterInjectionDemo {
 
     public static void main(String[] args) {
-
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 注册 Configuration Class（配置类）
         applicationContext.register(AnnotationDependencySetterInjectionDemo.class);
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(applicationContext);
-
+        // todo 注意资源不能使用 /META-INF/dependency-setter-injection.xml： 因为 User 有 user 和 superUser,不唯一
         String xmlResourcePath = "classpath:/META-INF/dependency-lookup-context.xml";
         // 加载 XML 资源，解析并且生成 BeanDefinition
         beanDefinitionReader.loadBeanDefinitions(xmlResourcePath);
 
-        // 启动 Spring 应用上下文
         applicationContext.refresh();
 
         // 依赖查找并且创建 Bean
         UserHolder userHolder = applicationContext.getBean(UserHolder.class);
         System.out.println(userHolder);
 
-        // 显示地关闭 Spring 应用上下文
         applicationContext.close();
     }
 
     @Bean
-    public UserHolder userHolder(User user) {
+    public UserHolder userHolder(User user) { // superUser -> primary = true
         UserHolder userHolder = new UserHolder();
+        // setter 方法注入
         userHolder.setUser(user);
         return userHolder;
     }

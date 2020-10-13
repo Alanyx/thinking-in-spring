@@ -213,3 +213,27 @@
 
 - 阅读官方文档，查看 Autowring 的不足 
 https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/core.html#beans-autowired-exceptions
+
+### 202021012
+
+#### 55
+
+> org.geekbang.thinking.in.spring.ioc.dependency.injection.setter 目录
+>
+>org.geekbang.thinking.in.spring.ioc.dependency.injection.UserHolder
+
+### 202021013
+
+#### 56
+
+> org.geekbang.thinking.in.spring.ioc.dependency.injection.constructor
+
+#### 57
+
+> org.geekbang.thinking.in.spring.ioc.dependency.injection.field
+
+- 查找资料，了解 AutowiredAnnotationBeanPostProcessor
+
+#### 58
+
+> org.geekbang.thinking.in.spring.ioc.dependency.injection.method

@@ -7,9 +7,9 @@
     <import resource="classpath:/META-INF/dependency-lookup-context.xml"/>
 
     <bean class="org.geekbang.thinking.in.spring.ioc.dependency.injection.UserHolder"
-          autowire="byType"
-    >
-<!--        <property name="user" ref="superUser" /> 替换成 autowiring 模式 -->
+          autowire="byName">
+        <!--autowire="byType" > byType 类型查找会查出 superUser(因为设置了 Primary);byName 会查出 User-->
+        <!--<property name="user" ref="superUser" /> 替换成 autowiring 模式 -->
     </bean>
 
 </beans>

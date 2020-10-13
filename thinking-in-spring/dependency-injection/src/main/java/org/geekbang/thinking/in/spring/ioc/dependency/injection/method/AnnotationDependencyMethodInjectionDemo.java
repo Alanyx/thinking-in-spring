@@ -53,8 +53,6 @@ public class AnnotationDependencyMethodInjectionDemo {
     }
 
     public static void main(String[] args) {
-
-        // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 注册 Configuration Class（配置类） -> Spring Bean
         applicationContext.register(AnnotationDependencyMethodInjectionDemo.class);
@@ -65,7 +63,6 @@ public class AnnotationDependencyMethodInjectionDemo {
         // 加载 XML 资源，解析并且生成 BeanDefinition
         beanDefinitionReader.loadBeanDefinitions(xmlResourcePath);
 
-        // 启动 Spring 应用上下文
         applicationContext.refresh();
 
         // 依赖查找 AnnotationDependencyFieldInjectionDemo Bean
@@ -78,8 +75,6 @@ public class AnnotationDependencyMethodInjectionDemo {
 
         System.out.println(userHolder == demo.userHolder2);
 
-
-        // 显示地关闭 Spring 应用上下文
         applicationContext.close();
     }
 

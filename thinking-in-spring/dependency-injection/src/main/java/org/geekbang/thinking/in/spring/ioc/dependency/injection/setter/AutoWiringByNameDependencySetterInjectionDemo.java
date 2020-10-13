@@ -21,7 +21,7 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 
 /**
- * "byName" Autowiring 依赖 Setter 方法注入示例
+ * 4."byName" Autowiring 依赖 Setter 方法注入示例
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
@@ -40,7 +40,6 @@ public class AutoWiringByNameDependencySetterInjectionDemo {
         // 依赖查找并且创建 Bean
         UserHolder userHolder = beanFactory.getBean(UserHolder.class);
         System.out.println(userHolder);
-
     }
 
 }
