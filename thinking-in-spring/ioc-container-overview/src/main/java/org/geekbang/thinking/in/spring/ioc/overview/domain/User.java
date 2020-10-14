@@ -39,12 +39,18 @@ public class User implements BeanNameAware {
     private String name;
 
     /**
-     * 枚举注入
+     * 枚举注入：涉及到 spring 中的类型转换
      */
     private City city;
 
+    /**
+     * 数组类型注入
+     */
     private City[] workCities;
 
+    /**
+     * 集合类型注入
+     */
     private List<City> lifeCities;
 
     /**

@@ -32,25 +32,25 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  */
 public class AwareInterfaceDependencyInjectionDemo implements BeanFactoryAware, ApplicationContextAware {
 
+    /**
+     * [仅做演示，不建议这样静态使用]
+     */
     private static BeanFactory beanFactory;
 
     private static ApplicationContext applicationContext;
 
-
     public static void main(String[] args) {
-
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        // 注册 Configuration Class（配置类） -> Spring Bean
+        // 注册 Configuration Class（配置类） -> 就是一个 Spring Bean，可以扩展 XXXAware 接口实现
         context.register(AwareInterfaceDependencyInjectionDemo.class);
 
-        // 启动 Spring 应用上下文
         context.refresh();
 
+        /// todo 注意 beanFactory ！= context
         System.out.println(beanFactory == context.getBeanFactory());
         System.out.println(applicationContext == context);
 
-        // 显示地关闭 Spring 应用上下文
         context.close();
     }
 

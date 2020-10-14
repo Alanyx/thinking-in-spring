@@ -22,6 +22,8 @@ import java.lang.annotation.*;
 
 /**
  * 用户组注解，扩展 {@link Qualifier @Qualifier}
+ * <p>
+ * 因为 Qualifier 可以作用在注解上
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since

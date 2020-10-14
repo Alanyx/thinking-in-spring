@@ -28,7 +28,9 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Collection;
 
 /**
- * {@link Qualifier} 注解依赖注入
+ * {@link Qualifier} 注解依赖注入：限定注入
+ * <p>
+ * Qualifier 做的是逻辑上的划分
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see Qualifier
@@ -37,8 +39,11 @@ import java.util.Collection;
 @Configuration
 public class QualifierAnnotationDependencyInjectionDemo {
 
+    /**
+     * 不指定时为 superUser -> primary =true
+     */
     @Autowired
-    private User user; // superUser -> primary =true
+    private User user;
 
     @Autowired
     @Qualifier("user") // 指定 Bean 名称或 ID
@@ -50,19 +55,8 @@ public class QualifierAnnotationDependencyInjectionDemo {
     // user1 -> @Qualifier
     // user2 -> @Qualifier
 
-    @Autowired
-    private Collection<User> allUsers; // 2 Beans = user + superUser
-
-    @Autowired
-    @Qualifier
-    private Collection<User> qualifiedUsers; // 2 Beans = user1 + user2 -> 4 Beans = user1 + user2 + user3 + user4
-
-    @Autowired
-    @UserGroup
-    private Collection<User> groupedUsers; // 2 Beans = user3 + user4
-
     @Bean
-    @Qualifier // 进行逻辑分组
+    @Qualifier // 进行逻辑分组【非常规的用法，不建议这样用】
     public User user1() {
         return createUser(7L);
     }
@@ -71,7 +65,6 @@ public class QualifierAnnotationDependencyInjectionDemo {
     @Qualifier // 进行逻辑分组
     public static User user2() {
         return createUser(8L);
-
     }
 
     @Bean
@@ -92,20 +85,28 @@ public class QualifierAnnotationDependencyInjectionDemo {
         return user;
     }
 
-    public static void main(String[] args) {
+    @Autowired
+    private Collection<User> allUsers; // 2 Beans = user + superUser
 
+    @Autowired
+    @Qualifier  // UserGroup 相当于继承了 @Qualifier 注解
+    private Collection<User> qualifiedUsers; // 4 Beans = user1 + user2 + user3 + user4
+
+    @Autowired
+    @UserGroup
+    private Collection<User> groupedUsers; // 2 Beans = user3 + user4
+
+    public static void main(String[] args) {
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 注册 Configuration Class（配置类） -> Spring Bean
         applicationContext.register(QualifierAnnotationDependencyInjectionDemo.class);
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(applicationContext);
-
         String xmlResourcePath = "classpath:/META-INF/dependency-lookup-context.xml";
         // 加载 XML 资源，解析并且生成 BeanDefinition
         beanDefinitionReader.loadBeanDefinitions(xmlResourcePath);
 
-        // 启动 Spring 应用上下文
         applicationContext.refresh();
 
         // 依赖查找 QualifierAnnotationDependencyInjectionDemo Bean
@@ -122,8 +123,6 @@ public class QualifierAnnotationDependencyInjectionDemo {
         // 期待输出 user3 user4
         System.out.println("demo.groupedUsers = " + demo.groupedUsers);
 
-
-        // 显示地关闭 Spring 应用上下文
         applicationContext.close();
     }
 
