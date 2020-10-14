@@ -265,3 +265,9 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 #### 64
 
 > org.geekbang.thinking.in.spring.ioc.dependency.injection.LazyAnnotationDependencyInjectionDemo
+
+#### 65
+
+> org.geekbang.thinking.in.spring.ioc.dependency.injection.AnnotationDependencyInjectionResolutionDemo
+>
+> 断电查看源码 DefaultListableBeanFactory#resolveDependency 和 依赖描述符- DependencyDescriptor

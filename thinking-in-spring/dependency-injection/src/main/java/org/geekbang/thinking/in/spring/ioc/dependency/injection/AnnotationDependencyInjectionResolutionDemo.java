@@ -19,8 +19,6 @@ package org.geekbang.thinking.in.spring.ioc.dependency.injection;
 import org.geekbang.thinking.in.spring.ioc.dependency.injection.annotation.InjectedUser;
 import org.geekbang.thinking.in.spring.ioc.dependency.injection.annotation.MyAutowired;
 import org.geekbang.thinking.in.spring.ioc.overview.domain.User;
-import org.springframework.beans.factory.ObjectFactory;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,11 +28,8 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 
 import javax.inject.Inject;
-import java.lang.annotation.Annotation;
-import java.util.*;
-
-import static java.util.Arrays.asList;
-import static org.springframework.context.annotation.AnnotationConfigUtils.AUTOWIRED_ANNOTATION_PROCESSOR_BEAN_NAME;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * 注解驱动的依赖注入处理过程
@@ -50,7 +45,7 @@ public class AnnotationDependencyInjectionResolutionDemo {
     @Lazy
     private User lazyUser;
 
-    // DependencyDescriptor ->
+    // 对应的属性在类 DependencyDescriptor ->
     // 必须（required=true）
     // 实时注入（eager=true)
     // 通过类型（User.class）
@@ -60,8 +55,11 @@ public class AnnotationDependencyInjectionResolutionDemo {
     private User user;
 
     @Autowired          // 集合类型依赖注入
-    private Map<String, User> users; // user superUser
+    private Map<String, User> users; // user 、superUser
 
+    /**
+     *  @Autowired 在 java8 后可以包装 Optional（可选的）
+     */
     @MyAutowired
     private Optional<User> userOptional; // superUser
 
@@ -91,19 +89,16 @@ public class AnnotationDependencyInjectionResolutionDemo {
     }
 
     public static void main(String[] args) {
-
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 注册 Configuration Class（配置类） -> Spring Bean
         applicationContext.register(AnnotationDependencyInjectionResolutionDemo.class);
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(applicationContext);
-
         String xmlResourcePath = "classpath:/META-INF/dependency-lookup-context.xml";
         // 加载 XML 资源，解析并且生成 BeanDefinition
         beanDefinitionReader.loadBeanDefinitions(xmlResourcePath);
 
-        // 启动 Spring 应用上下文
         applicationContext.refresh();
 
         // 依赖查找 QualifierAnnotationDependencyInjectionDemo Bean
@@ -120,8 +115,6 @@ public class AnnotationDependencyInjectionResolutionDemo {
         // 期待输出 superUser Bean
         System.out.println("demo.myInjectedUser = " + demo.myInjectedUser);
 
-
-        // 显示地关闭 Spring 应用上下文
         applicationContext.close();
     }
 
