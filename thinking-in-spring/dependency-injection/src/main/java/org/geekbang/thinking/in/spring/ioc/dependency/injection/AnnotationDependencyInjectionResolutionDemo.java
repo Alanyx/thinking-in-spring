@@ -58,12 +58,12 @@ public class AnnotationDependencyInjectionResolutionDemo {
     private Map<String, User> users; // user 、superUser
 
     /**
-     *  @Autowired 在 java8 后可以包装 Optional（可选的）
+     * @Autowired 在 java8 后可以包装 Optional（可选的）
      */
     @MyAutowired
     private Optional<User> userOptional; // superUser
 
-    @Inject
+    @Inject // 效果与 @Autowired 是类似的，都是由 AutowiredAnnotationBeanPostProcessor 来处理
     private User injectedUser;
 
     @InjectedUser
@@ -72,19 +72,30 @@ public class AnnotationDependencyInjectionResolutionDemo {
 //    @Bean(name = AUTOWIRED_ANNOTATION_PROCESSOR_BEAN_NAME)
 //    public static AutowiredAnnotationBeanPostProcessor beanPostProcessor() {
 //        AutowiredAnnotationBeanPostProcessor beanPostProcessor = new AutowiredAnnotationBeanPostProcessor();
-//        // @Autowired + @Inject +  新注解 @InjectedUser
+//        // @Autowired + @Inject +  新注解 @InjectedUser 这种方式不安全（如 Inject 不存在）
 //        Set<Class<? extends Annotation>> autowiredAnnotationTypes =
 //                new LinkedHashSet<>(asList(Autowired.class, Inject.class, InjectedUser.class));
 //        beanPostProcessor.setAutowiredAnnotationTypes(autowiredAnnotationTypes);
 //        return beanPostProcessor;
 //    }
 
+    /**
+     * 利用 AutowiredAnnotationBeanPostProcessor 实现自定义的依赖注入注解【非特殊需求不建议这样使用】
+     * <p>
+     * 注意这里使用的是静态方法: 会提早注册和初始化 bean
+     *
+     * @return
+     */
     @Bean
-    @Order(Ordered.LOWEST_PRECEDENCE - 3)
+    @Order(Ordered.LOWEST_PRECEDENCE - 3) // 加载顺序：倒数第三位
     @Scope
     public static AutowiredAnnotationBeanPostProcessor beanPostProcessor() {
         AutowiredAnnotationBeanPostProcessor beanPostProcessor = new AutowiredAnnotationBeanPostProcessor();
+        // 替换原有的注解处理，使用新注解 @InjectedUser
         beanPostProcessor.setAutowiredAnnotationType(InjectedUser.class);
+        // 方式2：这种方式不安全（如 Inject 不存在）
+//        Set<Class<? extends Annotation>> autowiredAnonotationTypes = new LinkedHashSet<>(Arrays.asList(Autowired.class,Inject.class,InjectedUser.class));
+//        beanPostProcessor.setAutowiredAnnotationTypes(autowiredAnonotationTypes);
         return beanPostProcessor;
     }
 

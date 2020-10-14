@@ -270,4 +270,26 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 
 > org.geekbang.thinking.in.spring.ioc.dependency.injection.AnnotationDependencyInjectionResolutionDemo
 >
-> 断电查看源码 DefaultListableBeanFactory#resolveDependency 和 依赖描述符- DependencyDescriptor
+> 断点查看源码 DefaultListableBeanFactory#resolveDependency 和 依赖描述符- DependencyDescriptor
+
+#### 66
+
+> 同上：查找资料了解 DefaultListableBeanFactory 和 AutowiredAnnotationBeanPostProcessor 的基本原理和源码，重点断点查看 @Autowired注入的过程
+>
+> 借助 idea 的线程堆栈查看
+
+#### 67
+
+> 查找资料了解 AutowiredAnnotationBeanPostProcessor 的基本原理和源码（参见 AutowiredAnnotationBeanPostProcessor 的构造器，支持 @Inject）
+
+#### 68
+
+> 查找资料了解 CommonAnnotationBeanPostProcessor 的基本原理和源码
+
+#### 69
+
+> org.geekbang.thinking.in.spring.ioc.dependency.injection.AnnotationDependencyInjectionResolutionDemo
+
+#### 70
+
+无
