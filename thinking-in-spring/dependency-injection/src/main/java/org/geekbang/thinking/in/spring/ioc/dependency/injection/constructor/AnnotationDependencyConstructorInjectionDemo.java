@@ -51,7 +51,7 @@ public class AnnotationDependencyConstructorInjectionDemo {
 
     @Bean
     public UserHolder userHolder(User user) {
-        // 与 setter 方法唯一区别
+        // 与 setter 方法区别
         return new UserHolder(user);
     }
 }

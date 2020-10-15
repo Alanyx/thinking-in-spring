@@ -230,6 +230,8 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 
 #### 55
 
+[done]
+
 > org.geekbang.thinking.in.spring.ioc.dependency.injection.setter 目录
 >
 >org.geekbang.thinking.in.spring.ioc.dependency.injection.UserHolder
@@ -238,9 +240,13 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 
 #### 56
 
+[done]
+
 > org.geekbang.thinking.in.spring.ioc.dependency.injection.constructor
 
 #### 57
+
+[done]
 
 > org.geekbang.thinking.in.spring.ioc.dependency.injection.field
 
@@ -277,6 +283,8 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 #### 64
 
 > org.geekbang.thinking.in.spring.ioc.dependency.injection.LazyAnnotationDependencyInjectionDemo
+
+### 202021014
 
 #### 65
 
