@@ -12,14 +12,12 @@
     <artifactId>dependency-source</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>org.geekbang</groupId>
             <artifactId>ioc-container-overview</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
-
     </dependencies>
 
 </project>

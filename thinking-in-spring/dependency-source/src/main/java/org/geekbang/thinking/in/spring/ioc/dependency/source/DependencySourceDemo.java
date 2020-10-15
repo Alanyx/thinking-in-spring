@@ -19,11 +19,9 @@ package org.geekbang.thinking.in.spring.ioc.dependency.source;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.event.ApplicationEventMulticaster;
 import org.springframework.core.io.ResourceLoader;
 
 import javax.annotation.PostConstruct;
@@ -36,7 +34,15 @@ import javax.annotation.PostConstruct;
  */
 public class DependencySourceDemo {
 
-    // 注入在 postProcessProperties 方法执行，早于 setter注入，也早于 @PostConstruct
+    /**
+     * 结合源码 AbstractApplicationContext#prepareBeanFactory 看以下几个元素的注册：
+     * beanFactory.registerResolvableDependency(BeanFactory.class, beanFactory);
+     * beanFactory.registerResolvableDependency(ResourceLoader.class, this);
+     * beanFactory.registerResolvableDependency(ApplicationEventPublisher.class, this);
+     * beanFactory.registerResolvableDependency(ApplicationContext.class, this);
+     */
+
+    // 注入在 postProcessProperties 方法执行，早于 setter 注入，也早于 @PostConstruct
     @Autowired
     private BeanFactory beanFactory;
 
@@ -51,12 +57,15 @@ public class DependencySourceDemo {
 
     @PostConstruct
     public void initByInjection() {
-        System.out.println("beanFactory == applicationContext " + (beanFactory == applicationContext));
-        System.out.println("beanFactory == applicationContext.getBeanFactory() " + (beanFactory == applicationContext.getAutowireCapableBeanFactory()));
-        System.out.println("resourceLoader == applicationContext " + (resourceLoader == applicationContext));
-        System.out.println("ApplicationEventPublisher == applicationContext " + (applicationEventPublisher == applicationContext));
+        System.out.println("beanFactory == applicationContext " + (beanFactory == applicationContext)); // false
+        System.out.println("beanFactory == applicationContext.getBeanFactory() " + (beanFactory == applicationContext.getAutowireCapableBeanFactory())); // true
+        System.out.println("resourceLoader == applicationContext " + (resourceLoader == applicationContext)); // true
+        System.out.println("ApplicationEventPublisher == applicationContext " + (applicationEventPublisher == applicationContext));// true
     }
 
+    /**
+     * 都会报错，这是依赖注入比依赖查找多一种非 Spring 容器管理对象的来源方式
+     */
     @PostConstruct
     public void initByLookup() {
         getBean(BeanFactory.class);
@@ -65,6 +74,13 @@ public class DependencySourceDemo {
         getBean(ApplicationEventPublisher.class);
     }
 
+    /**
+     * 测试获取 Bean
+     *
+     * @param beanType
+     * @param <T>
+     * @return
+     */
     private <T> T getBean(Class<T> beanType) {
         try {
             return beanFactory.getBean(beanType);
@@ -76,19 +92,16 @@ public class DependencySourceDemo {
 
 
     public static void main(String[] args) {
-
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 注册 Configuration Class（配置类） -> Spring Bean
         applicationContext.register(DependencySourceDemo.class);
 
-        // 启动 Spring 应用上下文
         applicationContext.refresh();
 
         // 依赖查找 DependencySourceDemo Bean
         DependencySourceDemo demo = applicationContext.getBean(DependencySourceDemo.class);
 
-        // 显示地关闭 Spring 应用上下文
         applicationContext.close();
     }
 }
