@@ -293,3 +293,41 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 #### 70
 
 无
+
+### 202021015
+
+#### 71
+
+>  org.springframework.context.annotation.AnnotationConfigUtils
+>
+> 查资料了解 AnnotationConfigUtils#registerAnnotationConfigProcessors
+
+#### 72
+
+> 查资料了解 AbstractApplicationContext#prepareBeanFactory
+
+
+>org.geekbang.thinking.in.spring.ioc.dependency.source.DependencySourceDemo
+
+#### 73
+
+> 浏览总体类 org.springframework.beans.factory.support.BeanDefinitionRegistry
+>
+> 阅读 BeanDefinitionRegistry#registerBeanDefinition 在 DefaultListableBeanFactory 中的实现
+
+#### 74
+
+> 阅读 org.springframework.beans.factory.support.DefaultListableBeanFactory#registerBeanDefinition
+
+#### 75
+
+> SingletonBeanRegistry#registerSingleton
+>
+>阅读 SingletonBeanRegistry#registerSingleton 在 DefaultListableBeanFactory 中的实现
+
+#### 76
+
+> 查资料了解 ConfigurableListableBeanFactory#registerResolvableDependency
+
+
+>org.geekbang.thinking.in.spring.ioc.dependency.source.ResolvableDependencySourceDemo
