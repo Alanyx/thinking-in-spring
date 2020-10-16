@@ -65,7 +65,7 @@ public class User implements BeanNameAware {
     private String contextAsText;
 
     /**
-     * 当前 Bean 的名称
+     * 当前 Bean 的名称，便于查看日志是哪个对象
      */
     private transient String beanName;
 

@@ -18,7 +18,6 @@ package org.geekbang.thinking.in.spring.ioc.bean.scope;
 
 import org.geekbang.thinking.in.spring.ioc.overview.domain.User;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -60,15 +59,11 @@ public class BeanScopeDemo implements DisposableBean {
 
     @Autowired
     @Qualifier("singletonUser")
-    private User singletonUser;
-
-    @Autowired
-    @Qualifier("singletonUser")
     private User singletonUser1;
 
     @Autowired
-    @Qualifier("prototypeUser")
-    private User prototypeUser;
+    @Qualifier("singletonUser")
+    private User singletonUser2;
 
     @Autowired
     @Qualifier("prototypeUser")
@@ -79,21 +74,26 @@ public class BeanScopeDemo implements DisposableBean {
     private User prototypeUser2;
 
     @Autowired
+    @Qualifier("prototypeUser")
+    private User prototypeUser3;
+
+    /**
+     * 依赖注入集合类型的对象
+     */
+    @Autowired
     private Map<String, User> users;
 
     @Autowired
     private ConfigurableListableBeanFactory beanFactory; // Resolvable Dependency
 
     public static void main(String[] args) {
-
-        // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 注册 Configuration Class（配置类） -> Spring Bean
         applicationContext.register(BeanScopeDemo.class);
 
+        // 插入生命周期管理【一般初始化之后已经被使用，这样会销毁数据，不建议这么做，仅做演示】
         applicationContext.addBeanFactoryPostProcessor(beanFactory -> {
             beanFactory.addBeanPostProcessor(new BeanPostProcessor() {
-
                 @Override
                 public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
                     System.out.printf("%s Bean 名称:%s 在初始化后回调...%n", bean.getClass().getName(), beanName);
@@ -102,7 +102,6 @@ public class BeanScopeDemo implements DisposableBean {
             });
         });
 
-        // 启动 Spring 应用上下文
         applicationContext.refresh();
 
         // 结论一：
@@ -114,24 +113,21 @@ public class BeanScopeDemo implements DisposableBean {
         // Prototype Bean 有别于其他地方的依赖注入 Prototype Bean
 
         // 结论三：
-        // 无论是 Singleton 还是 Prototype Bean 均会执行初始化方法回调
-        // 不过仅 Singleton Bean 会执行销毁方法回调
+        // 无论是 Singleton 还是 Prototype Bean 均会执行初始化方法(如 @PostConstruct、自定义 initBean)回调
+        // 不过仅 Singleton Bean 会执行销毁方法(如 @PreDestroy)回调[Spring容器没有办法管理prototypeBean的完整生命周期，也没有办法记录示例的存在。销毁回调方法将不会执行，]
 
-        scopedBeansByLookup(applicationContext);
-
+//        scopedBeansByLookup(applicationContext);
         scopedBeansByInjection(applicationContext);
 
-        // 显示地关闭 Spring 应用上下文
         applicationContext.close();
     }
 
     private static void scopedBeansByLookup(AnnotationConfigApplicationContext applicationContext) {
-
         for (int i = 0; i < 3; i++) {
             // singletonUser 是共享 Bean 对象
             User singletonUser = applicationContext.getBean("singletonUser", User.class);
             System.out.println("singletonUser = " + singletonUser);
-            // prototypeUser 是每次依赖查找均生成了新的 Bean 对象
+            // prototypeUser 每次依赖查找均生成了新的 Bean 对象
             User prototypeUser = applicationContext.getBean("prototypeUser", User.class);
             System.out.println("prototypeUser = " + prototypeUser);
         }
@@ -140,30 +136,35 @@ public class BeanScopeDemo implements DisposableBean {
     private static void scopedBeansByInjection(AnnotationConfigApplicationContext applicationContext) {
         BeanScopeDemo beanScopeDemo = applicationContext.getBean(BeanScopeDemo.class);
 
-        System.out.println("beanScopeDemo.singletonUser = " + beanScopeDemo.singletonUser);
         System.out.println("beanScopeDemo.singletonUser1 = " + beanScopeDemo.singletonUser1);
+        System.out.println("beanScopeDemo.singletonUser2 = " + beanScopeDemo.singletonUser2);
 
-        System.out.println("beanScopeDemo.prototypeUser = " + beanScopeDemo.prototypeUser);
         System.out.println("beanScopeDemo.prototypeUser1 = " + beanScopeDemo.prototypeUser1);
         System.out.println("beanScopeDemo.prototypeUser2 = " + beanScopeDemo.prototypeUser2);
+        System.out.println("beanScopeDemo.prototypeUser3 = " + beanScopeDemo.prototypeUser3);
 
         System.out.println("beanScopeDemo.users = " + beanScopeDemo.users);
     }
 
+    /**
+     * 如果需要销毁 prototype ，可以这样做
+     *
+     * @throws Exception
+     */
     @Override
     public void destroy() throws Exception {
 
         System.out.println("当前 BeanScopeDemo Bean 正在销毁中...");
 
-        this.prototypeUser.destroy();
-        this.prototypeUser1.destroy();
         this.prototypeUser1.destroy();
         this.prototypeUser2.destroy();
+        this.prototypeUser2.destroy();
+        this.prototypeUser3.destroy();
         // 获取 BeanDefinition
         for (Map.Entry<String, User> entry : this.users.entrySet()) {
             String beanName = entry.getKey();
             BeanDefinition beanDefinition = beanFactory.getBeanDefinition(beanName);
-            if (beanDefinition.isPrototype()) { // 如果当前 Bean 是 prototype scope
+            if (beanDefinition.isPrototype()) { // 如果当前 Bean 是 prototype scope，需要显示销毁
                 User user = entry.getValue();
                 user.destroy();
             }
@@ -171,4 +172,5 @@ public class BeanScopeDemo implements DisposableBean {
 
         System.out.println("当前 BeanScopeDemo Bean 销毁完成");
     }
+
 }

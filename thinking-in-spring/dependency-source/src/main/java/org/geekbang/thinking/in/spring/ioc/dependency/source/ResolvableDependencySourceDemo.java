@@ -22,7 +22,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import javax.annotation.PostConstruct;
 
 /**
- * ResolvableDependency 作为依赖来源
+ * ResolvableDependency 作为依赖来源：只能用于依赖注入(只能根据类型)，不能用于依赖查找
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
@@ -42,11 +42,12 @@ public class ResolvableDependencySourceDemo {
         // 注册 Configuration Class（配置类） -> Spring Bean
         applicationContext.register(ResolvableDependencySourceDemo.class);
 
+        /// todo 注意 applicationContext.refresh(); 之前就完成，否则会报错
+        // beanFactory 天然就是 ConfigurableListableBeanFactory（string 对象是回调产生的）
         applicationContext.addBeanFactoryPostProcessor(beanFactory -> {
             // 注册 Resolvable Dependency
             beanFactory.registerResolvableDependency(String.class, "Hello,World");
         });
-
 
         applicationContext.refresh();
         applicationContext.close();

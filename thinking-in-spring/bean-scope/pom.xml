@@ -10,10 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>bean-scope</artifactId>
+    <!--web 项目打包-->
     <packaging>war</packaging>
 
     <dependencies>
-
         <!-- 使用 Servlet 3.1 API -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -42,7 +42,6 @@
             <version>2.2.0.RELEASE</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>

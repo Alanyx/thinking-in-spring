@@ -331,3 +331,28 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 
 
 >org.geekbang.thinking.in.spring.ioc.dependency.source.ResolvableDependencySourceDemo
+
+#### 77
+
+> org.geekbang.thinking.in.spring.ioc.dependency.source.ExternalConfigurationDependencySourceDemo
+
+#### 78
+
+无
+
+#### 79
+
+无
+
+#### 80
+
+> DefaultListableBeanFactory#isSingleton
+
+### 202021016
+
+#### 81
+
+> org.geekbang.thinking.in.spring.ioc.bean.scope.BeanScopeDemo
+
+#### 82
+
