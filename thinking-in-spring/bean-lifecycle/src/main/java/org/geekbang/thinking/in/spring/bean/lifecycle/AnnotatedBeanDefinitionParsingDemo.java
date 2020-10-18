@@ -29,11 +29,12 @@ public class AnnotatedBeanDefinitionParsingDemo {
 
     public static void main(String[] args) {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-        // 基于 Java 注解的 AnnotatedBeanDefinitionReader 的实现
+        // 基于 Java 注解的 AnnotatedBeanDefinitionReader 的实现: todo 注意 AnnotatedBeanDefinitionReader 没有实现 BeanDefinitionReader（面向资源）
         AnnotatedBeanDefinitionReader beanDefinitionReader = new AnnotatedBeanDefinitionReader(beanFactory);
         int beanDefinitionCountBefore = beanFactory.getBeanDefinitionCount();
-        // 注册当前类（非 @Component class）
+        // 注册当前类（非 @Component class 也可以注册）
         beanDefinitionReader.register(AnnotatedBeanDefinitionParsingDemo.class);
+
         int beanDefinitionCountAfter = beanFactory.getBeanDefinitionCount();
         int beanDefinitionCount = beanDefinitionCountAfter - beanDefinitionCountBefore;
         System.out.println("已加载 BeanDefinition 数量：" + beanDefinitionCount);

@@ -380,6 +380,8 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 
 > org.geekbang.thinking.in.spring.ioc.bean.scope.web.WebConfiguration
 
+### 202021018
+
 #### 83
 
 > 阅读了解 SessionScope 实现（SessionScope 源码）
@@ -401,3 +403,18 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 #### 87
 
 无
+
+#### 88
+
+> org.geekbang.thinking.in.spring.bean.lifecycle.BeanMetadataConfigurationDemo
+> [涉及的类：XmlBeanDefinitionReader]
+
+#### 89
+
+> org.geekbang.thinking.in.spring.bean.lifecycle.AnnotatedBeanDefinitionParsingDemo
+
+#### 90
+
+> 简要了解 org.springframework.beans.factory.support.BeanDefinitionRegistry
+> 和实现类 org.springframework.beans.factory.support.DefaultListableBeanFactory#registerBeanDefinition()
+> 阅读 DefaultListableBeanFactory#registerBeanDefinition() 源码
