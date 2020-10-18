@@ -376,3 +376,28 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 
 #### 82
 
+> org.geekbang.thinking.in.spring.ioc.bean.scope.web.controller.IndexController
+
+> org.geekbang.thinking.in.spring.ioc.bean.scope.web.WebConfiguration
+
+#### 83
+
+> 阅读了解 SessionScope 实现（SessionScope 源码）
+
+#### 84
+
+> 阅读了解 ApplicationScope 实现（org.springframework.web.context.support.ServletContextScope 源码）
+
+#### 85
+
+> org.geekbang.thinking.in.spring.ioc.bean.scope.ThreadLocalScope
+
+#### 86
+
+> 查资料了解 spring-cloud 的 org.springframework.cloud.context.config.annotation.RefreshScope
+>
+>简单了解自定义作用域
+
+#### 87
+
+无

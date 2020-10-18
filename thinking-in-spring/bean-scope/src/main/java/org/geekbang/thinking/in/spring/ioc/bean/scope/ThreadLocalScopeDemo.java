@@ -30,6 +30,11 @@ import org.springframework.context.annotation.Scope;
  */
 public class ThreadLocalScopeDemo {
 
+    /**
+     * 定义 Bean
+     *
+     * @return
+     */
     @Bean
     @Scope(ThreadLocalScope.SCOPE_NAME)
     public User user() {
@@ -43,10 +48,7 @@ public class ThreadLocalScopeDemo {
     }
 
     public static void main(String[] args) {
-
-        // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        // 注册 Configuration Class（配置类） -> Spring Bean
         applicationContext.register(ThreadLocalScopeDemo.class);
 
         applicationContext.addBeanFactoryPostProcessor(beanFactory -> {
@@ -54,18 +56,17 @@ public class ThreadLocalScopeDemo {
             beanFactory.registerScope(ThreadLocalScope.SCOPE_NAME, new ThreadLocalScope());
         });
 
-        // 启动 Spring 应用上下文
         applicationContext.refresh();
 
         scopedBeansByLookup(applicationContext);
 
-        // 关闭 Spring 应用上下文
         applicationContext.close();
     }
 
     private static void scopedBeansByLookup(AnnotationConfigApplicationContext applicationContext) {
 
         for (int i = 0; i < 3; i++) {
+            // 多线程的方式使用，校验是不是每个线程的名字不同
             Thread thread = new Thread(() -> {
                 // user 是共享 Bean 对象
                 User user = applicationContext.getBean("user", User.class);

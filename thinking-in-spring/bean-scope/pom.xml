@@ -36,6 +36,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!--@RefreshScope-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-context</artifactId>

@@ -21,7 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 首页 Spring Web MVC Controller
@@ -37,9 +36,9 @@ public class IndexController {
 
     @GetMapping("/index.html")
     public String index(Model model) {
-        // JSP EL 变量搜索路径 page -> request -> session -> application(ServletContext)
-        // userObject -> 渲染上下文
-        // user 对象存在 ServletContext，上下文名称：scopedTarget.user == 新生成 Bean 名称
+        // JSP EL 变量搜索路径： page -> request -> session -> application(ServletContext)
+        // 对象1：userObject -> 渲染上下文
+        // 对象2：user 对象存在 ServletContext，上下文名称（不是预期的 user,而是 scopedTarget.user ）：scopedTarget.user 是新生成的 Bean 名称
         model.addAttribute("userObject", user);
         return "index";
     }

@@ -20,7 +20,6 @@ import org.geekbang.thinking.in.spring.ioc.overview.domain.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.ApplicationScope;
-import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
@@ -34,9 +33,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 public class WebConfiguration {
 
     @Bean
-    @RequestScope
-//    @SessionScope
-    @ApplicationScope
+                    // 默认 单例
+//    @RequestScope // request scope
+//    @SessionScope // session scope
+    @ApplicationScope // application scope
     public User user() {
         User user = new User();
         user.setId(1L);

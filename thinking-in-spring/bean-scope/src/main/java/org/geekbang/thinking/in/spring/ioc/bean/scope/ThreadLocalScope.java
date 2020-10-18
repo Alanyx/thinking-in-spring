@@ -20,13 +20,12 @@ import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.config.Scope;
 import org.springframework.core.NamedThreadLocal;
 import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * ThreadLocal 级别 Scope
+ * ThreadLocal 级别 Scope（一个线程只有一份）
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
@@ -35,8 +34,12 @@ public class ThreadLocalScope implements Scope {
 
     public static final String SCOPE_NAME = "thread-local";
 
+    /**
+     * 定义 ThreadLocal
+     */
     private final NamedThreadLocal<Map<String, Object>> threadLocal = new NamedThreadLocal("thread-local-scope") {
-
+        // 当 threadLocal 不存在时创建一个初始化的对象（不用担心使用时空指针）
+        @Override
         public Map<String, Object> initialValue() {
             return new HashMap<>();
         }
@@ -44,17 +47,14 @@ public class ThreadLocalScope implements Scope {
 
     @Override
     public Object get(String name, ObjectFactory<?> objectFactory) {
-
         // 非空
         Map<String, Object> context = getContext();
 
         Object object = context.get(name);
-
         if (object == null) {
             object = objectFactory.getObject();
             context.put(name, object);
         }
-
         return object;
     }
 
@@ -80,9 +80,11 @@ public class ThreadLocalScope implements Scope {
         return context.get(key);
     }
 
+    // 当前线程的Id
     @Override
     public String getConversationId() {
         Thread thread = Thread.currentThread();
+        // 注意不要使用 name,用户可能重复
         return String.valueOf(thread.getId());
     }
 }
