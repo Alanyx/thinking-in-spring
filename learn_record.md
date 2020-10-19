@@ -418,3 +418,18 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 > 简要了解 org.springframework.beans.factory.support.BeanDefinitionRegistry
 > 和实现类 org.springframework.beans.factory.support.DefaultListableBeanFactory#registerBeanDefinition()
 > 阅读 DefaultListableBeanFactory#registerBeanDefinition() 源码
+
+### 202021019
+
+#### 91
+
+> 合并
+> src/main/resources/META-INF/dependency-lookup-context.xml
+
+> org.geekbang.thinking.in.spring.bean.lifecycle.MergedBeanDefinitionDemo
+> 断点调试 merge(GenericBeanDefinition) 和 非 merge(RootBeanDefinition)
+> 找资料阅读 AbstractBeanFactory#getMergedBeanDefinition(String name)
+
+#### 92
+
+
