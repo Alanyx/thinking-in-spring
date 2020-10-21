@@ -32,7 +32,7 @@ import org.springframework.util.ObjectUtils;
 class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
     /**
-     * 实例化
+     * 实例化：正常不建议这样使用「非主流」
      *
      * @param beanClass
      * @param beanName
@@ -42,7 +42,7 @@ class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPos
     @Override
     public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
         if (ObjectUtils.nullSafeEquals("superUser", beanName) && SuperUser.class.equals(beanClass)) {
-            // 把配置完成 superUser Bean 覆盖
+            // 把配置完成 superUser Bean 覆盖,只影响 SuperUser,User 不变
             return new SuperUser();
         }
         return null; // 保持 Spring IoC 容器的实例化操作

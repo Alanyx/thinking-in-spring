@@ -30,9 +30,7 @@ import org.springframework.context.annotation.CommonAnnotationBeanPostProcessor;
 public class BeanInitializationLifecycleDemo {
 
     public static void main(String[] args) {
-
         executeBeanFactory();
-
     }
 
     private static void executeBeanFactory() {

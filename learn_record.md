@@ -444,6 +444,17 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 > 断点调试 merge(GenericBeanDefinition) 和 非 merge(RootBeanDefinition)
 > 找资料阅读 AbstractBeanFactory#getMergedBeanDefinition(String name)
 
-#### 92
+### 202021021
+#### 92 | Spring Bean Class加载阶段：Bean ClassLoader能够被替换吗?
 
+> 查资料断点理解 org.springframework.beans.factory.support.AbstractBeanFactory#createBean(String beanName, RootBeanDefinition mbd, @Nullable Object[] args)
+>
+> 断点查看其子类实现 org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#createBean
 
+#### 93 | Spring Bean实例化前阶段：Bean的实例化能否被绕开？
+
+> org.geekbang.thinking.in.spring.bean.lifecycle.BeanInstantiationLifecycleDemo
+>
+> 阅读 postProcessBeforeInstantiation 的源码调用： org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#applyBeanPostProcessorsBeforeInstantiation
+
+> org.geekbang.thinking.in.spring.bean.lifecycle.MyInstantiationAwareBeanPostProcessor
