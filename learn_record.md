@@ -304,7 +304,7 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 
 > org.geekbang.thinking.in.spring.ioc.dependency.injection.AnnotationDependencyInjectionResolutionDemo
 >
-> 断点查看源码 DefaultListableBeanFactory#resolveDependency 和 依赖描述符- DependencyDescriptor
+> 断点查看源码 DefaultListableBeanFactory#resolveDependency 和依赖描述符- DependencyDescriptor
 
 #### 66
 
@@ -321,6 +321,8 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 > 查找资料了解 CommonAnnotationBeanPostProcessor 的基本原理和源码
 
 #### 69
+
+[done]
 
 > org.geekbang.thinking.in.spring.ioc.dependency.injection.AnnotationDependencyInjectionResolutionDemo
 
