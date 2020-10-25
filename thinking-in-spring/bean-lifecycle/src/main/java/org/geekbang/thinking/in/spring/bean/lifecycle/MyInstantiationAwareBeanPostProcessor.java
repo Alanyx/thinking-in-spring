@@ -32,7 +32,7 @@ import org.springframework.util.ObjectUtils;
 class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
     /**
-     * 实例化：正常不建议这样使用「非主流」
+     * 实例化前：正常不建议这样使用「非主流」
      *
      * @param beanClass
      * @param beanName
@@ -48,13 +48,22 @@ class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPos
         return null; // 保持 Spring IoC 容器的实例化操作
     }
 
+    /**
+     * 实例化后：默认情况下返回 true
+     *
+     * @param bean
+     * @param beanName
+     * @return
+     * @throws BeansException
+     */
     @Override
     public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
         if (ObjectUtils.nullSafeEquals("user", beanName) && User.class.equals(bean.getClass())) {
             User user = (User) bean;
             user.setId(2L);
             user.setName("mercyblitz");
-            // "user" 对象不允许属性赋值（填入）（配置元信息 -> 属性值）
+            // "user" 对象不允许属性赋值（填入）（配置元信息 -> 属性值），通过手动的方式赋值
+            // 即 src/main/resources/META-INF/dependency-lookup-context.xml 中 user 其他属性都会被忽略掉
             return false;
         }
         return true;
@@ -62,15 +71,13 @@ class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPos
 
     // user 是跳过 Bean 属性赋值（填入）
     // superUser 也是完全跳过 Bean 实例化（Bean 属性赋值（填入））
-    // userHolder
-
+    // userHolder 可以对其进行操作
     @Override
     public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName)
             throws BeansException {
         // 对 "userHolder" Bean 进行拦截
         if (ObjectUtils.nullSafeEquals("userHolder", beanName) && UserHolder.class.equals(bean.getClass())) {
             // 假设 <property name="number" value="1" /> 配置的话，那么在 PropertyValues 就包含一个 PropertyValue(number=1)
-
             final MutablePropertyValues propertyValues;
 
             if (pvs instanceof MutablePropertyValues) {
@@ -83,14 +90,13 @@ class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPos
             propertyValues.addPropertyValue("number", "1");
             // 原始配置 <property name="description" value="The user holder" />
 
-            // 如果存在 "description" 属性配置的话
+            // 如果存在 "description" 属性配置的话，进行替换
             if (propertyValues.contains("description")) {
-                // PropertyValue value 是不可变的
+                // PropertyValue value 是不可变的，因为属性是
                 // PropertyValue propertyValue = propertyValues.getPropertyValue("description");
                 propertyValues.removePropertyValue("description");
                 propertyValues.addPropertyValue("description", "The user holder V2");
             }
-
             return propertyValues;
         }
         return null;

@@ -68,7 +68,9 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
     }
 
     /**
-     * 依赖于注解驱动：在初始化 afterPropertiesSet 之前
+     * 初始化-方式1( @PostConstruct ---> afterPropertiesSet ---> 自定义初始化方法)
+     * <p>
+     * 依赖于注解驱动：在初始化 afterPropertiesSet 之前（添加 CommonAnnotationBeanPostProcessor 解决 @PostConstruct 没有回调的问题）
      * 当前场景：BeanFactory
      */
     @PostConstruct
@@ -79,9 +81,7 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
     }
 
     /**
-     * 初始化
-     *
-     * @throws Exception
+     * 初始化-方式2
      */
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -91,15 +91,17 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
     }
 
     /**
+     * 初始化-方式3
      * 自定义初始化方法: 在 afterPropertiesSet 之后
      */
     public void init() {
         // initPostConstruct V5 -> afterPropertiesSet V6
         this.description = "The user holder V6";
-        System.out.println("init() = " + description);
+        System.out.println("自定义初始化方法 init() = " + description);
     }
 
     /**
+     * 销毁-方式1
      * 销毁的顺序是: preDestroy > destroy > 自定义销毁方法（doDestroy）
      */
     @PreDestroy
@@ -109,6 +111,9 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
         System.out.println("preDestroy() = " + description);
     }
 
+    /**
+     * 销毁-方式2(DisposableBean#destroy)
+     */
     @Override
     public void destroy() throws Exception {
         // preDestroy : The user holder V10
@@ -116,10 +121,14 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
         System.out.println("destroy() = " + description);
     }
 
+    /**
+     * 销毁-方式3(自定义销毁 方法)
+     * 需要显示指明调用
+     */
     public void doDestroy() {
         // destroy : The user holder V11
         this.description = "The user holder V12";
-        System.out.println("doDestroy() = " + description);
+        System.out.println("自定义销毁 doDestroy() = " + description);
     }
 
     @Override
@@ -159,6 +168,11 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
         System.out.println("afterSingletonsInstantiated() = " + description);
     }
 
+    /**
+     * Java GC
+     *
+     * @throws Throwable
+     */
     @Override
     protected void finalize() throws Throwable {
         System.out.println("The UserHolder is finalized...");

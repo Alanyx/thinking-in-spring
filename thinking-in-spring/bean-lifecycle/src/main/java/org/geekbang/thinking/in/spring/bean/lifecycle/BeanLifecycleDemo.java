@@ -22,7 +22,8 @@ import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.CommonAnnotationBeanPostProcessor;
 
 /**
- * TODO
+ * bean 生命周期演示
+ * 合并了 BeanInitializationLifecycleDemo
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
@@ -31,8 +32,10 @@ public class BeanLifecycleDemo {
 
     public static void main(String[] args) throws InterruptedException {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+
         // 添加 BeanPostProcessor 实现 MyInstantiationAwareBeanPostProcessor
         beanFactory.addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
+        /// todo 注意 addBeanPostProcessor 增加的几个 BeanPostProcessor 顺序是先进先出，注意顺序
         // 添加 MyDestructionAwareBeanPostProcessor 执行销毁前回调
         beanFactory.addBeanPostProcessor(new MyDestructionAwareBeanPostProcessor());
         // 添加 CommonAnnotationBeanPostProcessor 解决 @PostConstruct @PreDestroy 回调
@@ -45,7 +48,7 @@ public class BeanLifecycleDemo {
         // 显示地执行 preInstantiateSingletons()
         // SmartInitializingSingleton 通常在 Spring ApplicationContext 场景使用
         // preInstantiateSingletons 将已注册的 BeanDefinition 初始化成 Spring Bean
-        beanFactory.preInstantiateSingletons();
+//        beanFactory.preInstantiateSingletons();
 
         // 通过 Bean Id 和类型进行依赖查找
         User user = beanFactory.getBean("user", User.class);
@@ -56,8 +59,9 @@ public class BeanLifecycleDemo {
 
         // 构造器注入按照类型注入，resolveDependency
         UserHolder userHolder = beanFactory.getBean("userHolder", UserHolder.class);
-
         System.out.println(userHolder);
+
+        // ----------------------------以下为销毁----------------------------
 
         // 执行 Bean 销毁（容器内，不代表被 GC 了）
         beanFactory.destroyBean("userHolder", userHolder);

@@ -37,6 +37,7 @@ public class BeanInitializationLifecycleDemo {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         // 添加 BeanPostProcessor 实现 MyInstantiationAwareBeanPostProcessor
         beanFactory.addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
+
         // 添加 CommonAnnotationBeanPostProcessor 解决 @PostConstruct 没有回调的问题
         beanFactory.addBeanPostProcessor(new CommonAnnotationBeanPostProcessor());
 
@@ -48,7 +49,7 @@ public class BeanInitializationLifecycleDemo {
         // 显示地执行 preInstantiateSingletons(),才会回调输出 V8
         // todo SmartInitializingSingleton 通常在 Spring ApplicationContext 场景使用
         // preInstantiateSingletons 将已注册的 BeanDefinition 初始化成 Spring Bean
-        beanFactory.preInstantiateSingletons();
+//        beanFactory.preInstantiateSingletons();
 
         // 通过 Bean Id 和类型进行依赖查找
         User user = beanFactory.getBean("user", User.class);
@@ -61,7 +62,6 @@ public class BeanInitializationLifecycleDemo {
         UserHolder userHolder = beanFactory.getBean("userHolder", UserHolder.class);
 
         System.out.println(userHolder);
-
     }
 
 }

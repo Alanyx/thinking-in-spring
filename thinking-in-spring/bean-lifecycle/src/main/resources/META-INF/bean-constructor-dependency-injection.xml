@@ -12,8 +12,8 @@
 
     <bean id="userHolder" class="org.geekbang.thinking.in.spring.bean.lifecycle.UserHolder" autowire="constructor"
           init-method="init" destroy-method="doDestroy">
-        <!-- 通过 XML 元素配置 -->
-        <!--        <property name="number" value="1" /> -->
+        <!-- 通过 XML 元素配置，见 MyInstantiationAwareBeanPostProcessor#postProcessProperties 使用 propertyValues 操作，两者效果等价 -->
+        <!-- <property name="number" value="1" /> -->
         <property name="description" value="The user holder"/>
     </bean>
 

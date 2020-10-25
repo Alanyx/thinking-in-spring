@@ -460,3 +460,168 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 > 阅读 postProcessBeforeInstantiation 的源码调用： org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#applyBeanPostProcessorsBeforeInstantiation
 
 > org.geekbang.thinking.in.spring.bean.lifecycle.MyInstantiationAwareBeanPostProcessor
+
+### 202021022
+#### 94 | Spring Bean实例化阶段：Bean实例是通过Java反射创建吗？
+
+> 断点调试 AbstractAutowireCapableBeanFactory@doCreateBean 方法源码
+>
+> org.springframework.beans.factory.support.InstantiationStrategy
+
+
+> org.geekbang.thinking.in.spring.bean.lifecycle.BeanInstantiationLifecycleDemo
+>
+> org.geekbang.thinking.in.spring.bean.lifecycle.UserHolder
+>
+> src/main/resources/META-INF/bean-constructor-dependency-injection.xml
+
+#### 95 | Spring Bean实例化后阶段：Bean实例化后是否一定被是使用吗？
+
+> org.geekbang.thinking.in.spring.bean.lifecycle.BeanInstantiationLifecycleDemo
+>
+> org.geekbang.thinking.in.spring.bean.lifecycle.MyInstantiationAwareBeanPostProcessor
+
+### 202021025
+
+#### 96 | Spring Bean属性赋值前阶段：配置后的PropertyValues还有机会修改吗？
+
+#### 97 | Aware接口回调阶段：众多Aware接口回调的顺序是安排的？
+
+> org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#invokeAwareMethods
+> 回调 org.geekbang.thinking.in.spring.bean.lifecycle.UserHolder的 XXXAware 的实现方法
+
+#### 98 | Spring Bean初始化前阶段：BeanPostProcessor
+
+[todo]  强调 applyBeanPostProcessorsBeforeInitialization 中调用 @PostConstruct 注解方法
+
+> org.geekbang.thinking.in.spring.bean.lifecycle.BeanInitializationLifecycleDemo
+
+> 对应的源码 org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#initializeBean()  内部实现==> applyBeanPostProcessorsBeforeInitialization
+
+#### 99 | Spring Bean初始化阶段：@PostConstruct、InitializingBean以及自定义方法
+
+> org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean  内部实现==> invokeInitMethods
+
+#### 100 | Spring Bean初始化后阶段：BeanPostProcessor
+
+> org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean  内部实现==> applyBeanPostProcessorsAfterInitialization
+ 
+#### 101 | Spring Bean初始化完成阶段：SmartInitializingSingleton
+
+> 查资料了解 org.springframework.beans.factory.SmartInitializingSingleton
+
+#### 102 | Spring Bean销毁前阶段：DestructionAwareBeanPostProcessor 用在怎样的场景?
+
+> org.geekbang.thinking.in.spring.bean.lifecycle.BeanLifecycleDemo
+
+> 查资料了解 DestructionAwareBeanPostProcessor
+>
+> 回调代码在 CommonAnnotationBeanPostProcessor，注册在其构造方法中
+
+> org.geekbang.thinking.in.spring.bean.lifecycle.MyDestructionAwareBeanPostProcessor
+
+#### 103 | Spring Bean销毁阶段：@PreDestroy、DisposableBean以及自定义方法
+
+> org.geekbang.thinking.in.spring.bean.lifecycle.UserHolder
+
+> org.geekbang.thinking.in.spring.bean.lifecycle.BeanLifecycleDemo ： 需要显示的调用 beanFactory.destroyBean
+
+#### 104 | Spring Bean垃圾收集（GC）：何时需要GC Spring Bean？
+
+> org.geekbang.thinking.in.spring.bean.lifecycle.UserHolder
+
+> org.geekbang.thinking.in.spring.bean.lifecycle.BeanLifecycleDemo
+
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+####
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+####
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+####
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+####
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+####
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+####
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+#### 
+####

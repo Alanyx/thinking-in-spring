@@ -55,13 +55,13 @@ public class BeanInstantiationLifecycleDemo {
         User superUser = beanFactory.getBean("superUser", User.class);
         System.out.println(superUser);
 
-        // 构造器注入按照类型注入，resolveDependency
+        // todo 构造器注入按照类型注入，resolveDependency: 比如这里注入的是 superUser,而不是 user
         UserHolder userHolder = beanFactory.getBean("userHolder", UserHolder.class);
         System.out.println(userHolder);
     }
 
     private static void executeApplicationContext() {
-        // 当 ApplicationContext 时，会回调 UserHolder 类的EnvironmentAware； beanFactory 不会回调
+        // todo 注意：当 ApplicationContext 时，会回调 UserHolder 类的 EnvironmentAware； beanFactory 不会回调
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext();
         String[] locations = {"META-INF/dependency-lookup-context.xml", "META-INF/bean-constructor-dependency-injection.xml"};
         applicationContext.setConfigLocations(locations);
