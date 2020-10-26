@@ -334,6 +334,8 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 
 #### 71
 
+[done]
+
 >  org.springframework.context.annotation.AnnotationConfigUtils
 >
 > 查资料了解 AnnotationConfigUtils#registerAnnotationConfigProcessors
@@ -342,8 +344,8 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 
 > 查资料了解 AbstractApplicationContext#prepareBeanFactory
 
-
->org.geekbang.thinking.in.spring.ioc.dependency.source.DependencySourceDemo
+[done]
+> org.geekbang.thinking.in.spring.ioc.dependency.source.DependencySourceDemo
 
 #### 73
 
