@@ -17,7 +17,6 @@
 package org.geekbang.thinking.in.spring.configuration.metadata;
 
 import org.geekbang.thinking.in.spring.ioc.overview.domain.User;
-import org.springframework.beans.factory.support.BeanDefinitionReader;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.support.PropertiesBeanDefinitionReader;
 import org.springframework.core.io.DefaultResourceLoader;
@@ -27,6 +26,8 @@ import org.springframework.core.io.support.EncodedResource;
 
 /**
  * {@link PropertiesBeanDefinitionReader} 示例
+ * <p>
+ * spring 官方不推荐 PropertiesBeanDefinitionReader
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
@@ -45,8 +46,9 @@ public class PropertiesBeanDefinitionReaderDemo {
         // 转换成带有字符编码 EncodedResource 对象
         EncodedResource encodedResource = new EncodedResource(resource, "UTF-8");
         int beanDefinitionsCount = beanDefinitionReader.loadBeanDefinitions(encodedResource);
-        System.out.println(String.format("已记载 %d 个 BeanDefinition\n", beanDefinitionsCount));
-        // 通过依赖查找获取 User Bean
+        System.out.println(String.format("已加载 %d 个 BeanDefinition\n", beanDefinitionsCount));
+
+        // 通过依赖查找获取 User Bean： todo 注意这里的 bean 的名称为 user,没有 xml 方便和受欢迎
         User user = beanFactory.getBean("user", User.class);
         System.out.println(user);
     }

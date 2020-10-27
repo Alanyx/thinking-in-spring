@@ -532,13 +532,46 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 
 > org.geekbang.thinking.in.spring.bean.lifecycle.BeanLifecycleDemo
 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
+### 202021026    
+
+#### 106 | Spring配置元信息：Spring存在哪些配置元信息？它们分别用在什么场景？
+
+无
+
+#### 107 | Spring Bean配置元信息：BeanDefinition
+
+- 复习 jvm 类加载的过程（深入拆解 JVM）
+
+#### 108 | Spring Bean属性元信息：PropertyValues
+
+> org.geekbang.thinking.in.spring.configuration.metadata.BeanConfigurationMetadataDemo
+
+#### 109 | Spring容器配置元信息
+
+> 查资料了解作用 org.springframework.beans.factory.xml.BeanDefinitionParserDelegate
+
+- 查资料了解 dtd 
+
+#### 110 | 基于XML资源装载Spring Bean配置元信息
+
+> 查资料掌握 XmlBeanDefinitionReader
+
+> 查资料了解 org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader
+
+#### 111 | 基于Properties资源装载Spring Bean配置元信息：为什么Spring官方不推荐？
+
+> 查资料掌握 org.springframework.beans.factory.support.PropertiesBeanDefinitionReader
+
+> src/main/resources/META-INF/user-bean-definitions.properties
+>
+> org.geekbang.thinking.in.spring.configuration.metadata.PropertiesBeanDefinitionReaderDemo
+
+#### 112 | 基于Java注解装载Spring Bean配置元信息
+
+无
+
+> 查资料了解各个注解的源码实现类
+
 #### 
 #### 
 #### 

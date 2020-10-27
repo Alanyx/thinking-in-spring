@@ -40,19 +40,20 @@ public class BeanConfigurationMetadataDemo {
         beanDefinitionBuilder.addPropertyValue("name", "mercyblitz");
         // 获取 AbstractBeanDefinition
         AbstractBeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
-        // 附加属性（不影响 Bean populate、initialize）
+        // 附加属性（不影响 Bean populate、initialize 的值）
         beanDefinition.setAttribute("name", "小马哥");
         // 当前 BeanDefinition 来自于何方（辅助作用）
         beanDefinition.setSource(BeanConfigurationMetadataDemo.class);
 
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
+        // 没有这个处理时， name 还是等于 mercyblitz，不是小马哥
         beanFactory.addBeanPostProcessor(new BeanPostProcessor() {
             @Override
             public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
                 if (ObjectUtils.nullSafeEquals("user", beanName) && User.class.equals(bean.getClass())) {
                     BeanDefinition bd = beanFactory.getBeanDefinition(beanName);
-                    if (BeanConfigurationMetadataDemo.class.equals(bd.getSource())) { // 通过 source 判断来
+                    if (BeanConfigurationMetadataDemo.class.equals(bd.getSource())) { // 通过 source 判断来（可以做一些定制）
                         // 属性（存储）上下文
                         String name = (String) bd.getAttribute("name"); // 就是 "小马哥"
                         User user = (User) bean;
@@ -67,9 +68,7 @@ public class BeanConfigurationMetadataDemo {
         beanFactory.registerBeanDefinition("user", beanDefinition);
 
         User user = beanFactory.getBean("user", User.class);
-
         System.out.println(user);
-
     }
 
 }
