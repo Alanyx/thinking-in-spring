@@ -26,16 +26,18 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * YAML 格式的 {@link PropertySourceFactory} 实现
+ * YAML 格式的 {@link PropertySourceFactory} 实现(间接的方式操作)
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
  */
 public class YamlPropertySourceFactory implements PropertySourceFactory {
+
     @Override
     public PropertySource<?> createPropertySource(String name, EncodedResource resource) throws IOException {
         YamlPropertiesFactoryBean yamlPropertiesFactoryBean = new YamlPropertiesFactoryBean();
         yamlPropertiesFactoryBean.setResources(resource.getResource());
+        // 获取 yamlProperties
         Properties yamlProperties = yamlPropertiesFactoryBean.getObject();
         return new PropertiesPropertySource(name, yamlProperties);
     }

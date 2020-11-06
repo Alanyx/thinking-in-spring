@@ -31,13 +31,29 @@ import java.util.Map;
 // 将当前类作为 Configuration Class
 @ImportResource("classpath:/META-INF/dependency-lookup-context.xml")
 @Import(User.class)
-@PropertySource("classpath:/META-INF/user-bean-definitions.properties") // Java 8+ @Repeatable 支持
+@PropertySource("classpath:/META-INF/user-bean-definitions.properties") // 基于 Java 8+ @Repeatable 支持
 @PropertySource("classpath:/META-INF/user-bean-definitions.properties")
 // @PropertySources(@PropertySource(...))
 public class AnnotatedSpringIoCContainerMetadataConfigurationDemo {
 
+    public static void main(String[] args) {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        // 注册当前类作为 Configuration Class
+        context.register(AnnotatedSpringIoCContainerMetadataConfigurationDemo.class);
+        context.refresh();
+
+        // beanName 和 bean 映射
+        Map<String, User> usersMap = context.getBeansOfType(User.class);
+        for (Map.Entry<String, User> entry : usersMap.entrySet()) {
+            System.out.printf("User Bean name : %s , content : %s \n", entry.getKey(), entry.getValue());
+        }
+
+        context.close();
+    }
+
     /**
      * user.name 是 Java Properties 默认存在，当前用户：mercyblitz，而非配置文件中定义"小马哥"
+     *
      * @param id
      * @param name
      * @return
@@ -50,18 +66,4 @@ public class AnnotatedSpringIoCContainerMetadataConfigurationDemo {
         return user;
     }
 
-    public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        // 注册当前类作为 Configuration Class
-        context.register(AnnotatedSpringIoCContainerMetadataConfigurationDemo.class);
-        // 启动 Spring 应用上下文
-        context.refresh();
-        // beanName 和 bean 映射
-        Map<String, User> usersMap = context.getBeansOfType(User.class);
-        for (Map.Entry<String, User> entry : usersMap.entrySet()) {
-            System.out.printf("User Bean name : %s , content : %s \n", entry.getKey(), entry.getValue());
-        }
-        // 关闭 Spring 应用上下文
-        context.close();
-    }
 }

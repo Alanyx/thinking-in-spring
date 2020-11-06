@@ -21,6 +21,7 @@
             <scope>compile</scope>
         </dependency>
 
+        <!--yaml 需要 1.18 版本支持：见org.springframework.beans.factory.config.YamlProcessor-->
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>

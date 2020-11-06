@@ -556,9 +556,7 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 
 #### 110 | 基于XML资源装载Spring Bean配置元信息
 
-> 查资料掌握 XmlBeanDefinitionReader
-
-> 查资料了解 org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader
+- 详见 113
 
 #### 111 | 基于Properties资源装载Spring Bean配置元信息：为什么Spring官方不推荐？
 
@@ -574,16 +572,89 @@ https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework- reference/cor
 
 > 查资料了解各个注解的源码实现类
 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
+#### 113 | Spring Bean配置元信息底层实现之XML资源
+
+> 查资料掌握 XmlBeanDefinitionReader
+
+> 查资料了解 org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader
+
+
+核心 API - XmlBeanDefinitionReader
+• 资源 - Resource
+• 底层 - BeanDefinitionDocumentReader
+• XML解析-JavaDOMLevel3API
+• BeanDefinition 解析 - BeanDefinitionParserDelegate
+• BeanDefinition 注册 - BeanDefinitionRegistry
+
+#### 114 | Spring Bean配置元信息底层实现之Properties资源
+
+SpringProperties资源BeanDefinition解析与注册 
+• 核心 API - PropertiesBeanDefinitionReader
+    • 资源
+        • 字节流 - Resource
+        • 字符流 - EncodedResouce • 底层
+    • 存储 - java.util.Properties
+    • BeanDefinition 解析 - API 内部实现
+    • BeanDefinition 注册 - BeanDefinitionRegistry
+
+#### 115 | Spring Bean配置元信息底层实现之Java注解
+
+SpringJava注册BeanDefinition解析与注册 
+• 核心 API - AnnotatedBeanDefinitionReader
+    • 资源
+        • 类对象 - java.lang.Class
+    • 底层
+        • 条件评估 - ConditionEvaluator
+        • Bean 范围解析 - ScopeMetadataResolver
+        • BeanDefinition 解析 - 内部 API 实现
+        • BeanDefinition 处理 - AnnotationConfigUtils.processCommonDefinitionAnnotations
+        • BeanDefinition 注册 - BeanDefinitionRegistry
+
+> 温习理解 org.geekbang.thinking.in.spring.bean.lifecycle.AnnotatedBeanDefinitionParsingDemo
+
+### 20201029
+
+#### 116 | 基于XML资源装载Spring IoC容器配置元信息
+
+无
+
+### 20201106
+#### 117 | 基于Java注解装载Spring IoC容器配置元信息
+
+> org.geekbang.thinking.in.spring.configuration.metadata.AnnotatedSpringIoCContainerMetadataConfigurationDemo
+>
+> 实践测试 @ImportResource、@Import
+
+> @PropertySource、、、、
+ 
+#### 118 | 基于Extensible XML authoring 扩展Spring XML元素
+
+[todo] 暂时没学
+
+#### 119 | Extensible XML authoring扩展原理
+
+[todo] 暂时没学
+
+#### 120 | 基于Properties资源装载外部化配置
+
+> org.geekbang.thinking.in.spring.configuration.metadata.PropertySourceDemo
+
+#### 121 | 基于YAML资源装载外部化配置
+
+> src/main/resources/META-INF/user.yaml
+>
+>src/main/resources/META-INF/yaml-property-source-context.xml
+
+> org.geekbang.thinking.in.spring.configuration.metadata.XmlBasedYamlPropertySourceDemo
+
+> org.geekbang.thinking.in.spring.configuration.metadata.YamlPropertySourceFactory
+>
+> org.geekbang.thinking.in.spring.configuration.metadata.AnnotatedYamlPropertySourceDemo
+
+#### 122 | 面试题
+
+- 查资料熟悉 spring 的模块组成并记忆
+
 #### 
 #### 
 #### 

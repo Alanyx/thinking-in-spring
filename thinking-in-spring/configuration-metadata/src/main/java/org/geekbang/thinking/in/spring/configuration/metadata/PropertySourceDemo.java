@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 外部化配置示例
+ * PropertySource 外部化配置示例
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
@@ -56,21 +56,24 @@ public class PropertySourceDemo {
         // 扩展 Environment 中的 PropertySources
         // 添加 PropertySource 操作必须在 refresh 方法之前完成
         Map<String, Object> propertiesSource = new HashMap<>();
+        // 设置内容，存在优先级：MapPropertySource > PropertiesPropertySource > SystemEnvironmentPropertySource > ResourcePropertySource
         propertiesSource.put("user.name", "xiaomage");
         org.springframework.core.env.PropertySource propertySource = new MapPropertySource("first-property-source", propertiesSource);
         context.getEnvironment().getPropertySources().addFirst(propertySource);
 
         // 注册当前类作为 Configuration Class
         context.register(PropertySourceDemo.class);
-        // 启动 Spring 应用上下文
         context.refresh();
+
+
         // beanName 和 bean 映射
         Map<String, User> usersMap = context.getBeansOfType(User.class);
         for (Map.Entry<String, User> entry : usersMap.entrySet()) {
             System.out.printf("User Bean name : %s , content : %s \n", entry.getKey(), entry.getValue());
         }
         System.out.println(context.getEnvironment().getPropertySources());
-        // 关闭 Spring 应用上下文
+
+
         context.close();
     }
 }
