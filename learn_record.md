@@ -751,15 +751,42 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 
 无
 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
+#### 150 | Spring数据绑定使用场景：为什么官方文档描述一笔带过？
+
+无
+  
+#### 151 | Spring数据绑定组件：DataBinder
+
+> 了解 org.springframework.validation.DataBinder 几个重要属性
+          
+#### 152 | DataBinder绑定元数据：PropertyValues不是Spring Bean属性元信息吗？
+ 
+无
+             
+#### 153 | DataBinder绑定控制参数：ignoreUnknownFields和ignoreInvalidFields有什么作用？
+ 
+> org.geekbang.thinking.in.spring.data.binding.DataBinderDemo
+                  
+#### 154 | Spring底层JavaBeans替换实现：BeanWrapper源于JavaBeans而高于JavaBeans？
+
+无
+                         
+#### 155 | BeanWrapper的使用场景：Spring数据绑定只是副业？
+
+> 了解 org.springframework.beans.BeanWrapper 
+                            
+#### 156 | 课外资料：标准JavaBeans是如何操作属性的
+
+> org.geekbang.thinking.in.spring.validation.JavaBeansDemo
+                                   
+#### 157 | DataBinder数据校验：又见Validator
+
+> 了解 DataBinder#bind 实现
+                                        
+#### 158 | 面试题精选 
+
+无
+
 ####
 #### 
 #### 
