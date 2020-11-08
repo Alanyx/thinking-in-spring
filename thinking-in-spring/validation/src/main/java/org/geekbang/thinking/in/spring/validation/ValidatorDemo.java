@@ -58,6 +58,7 @@ public class ValidatorDemo {
 
         @Override
         public boolean supports(Class<?> clazz) {
+            // User 及其子类是允许的
             return User.class.isAssignableFrom(clazz);
         }
 
@@ -67,7 +68,7 @@ public class ValidatorDemo {
             ValidationUtils.rejectIfEmptyOrWhitespace(errors, "id", "id.required");
             ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "name.required");
             String userName = user.getName();
-            // ...
+            // 比如校验名字长度等...
         }
     }
 }

@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * 错误文案示例
+ * 错误文案示例：
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see Errors
@@ -41,13 +41,15 @@ public class ErrorsMessageDemo {
         // 0. 创建 User 对象
         User user = new User();
         user.setName("小马哥");
+
         // 1. 选择 Errors - BeanPropertyBindingResult
         Errors errors = new BeanPropertyBindingResult(user, "user");
+
         // 2. 调用 reject 或 rejectValue
         // reject 生成 ObjectError
         // reject 生成 FieldError
         errors.reject("user.properties.not.null");
-        // user.name = user.getName()
+        // user.name 相当于 user.getName()：BeanPropertyBindingResult 通过表达式的方式去关联
         errors.rejectValue("name", "name.required");
 
         // 3. 获取 Errors 中 ObjectError 和 FieldError
@@ -66,6 +68,7 @@ public class ErrorsMessageDemo {
     }
 
     static MessageSource createMessageSource() {
+        // 国际化相关: 此处使用静态实现
         StaticMessageSource messageSource = new StaticMessageSource();
         messageSource.addMessage("user.properties.not.null", Locale.getDefault(), "User 所有属性不能为空");
         messageSource.addMessage("id.required", Locale.getDefault(), "the id of User must not be null.");

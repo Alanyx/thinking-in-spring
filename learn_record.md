@@ -655,7 +655,7 @@ SpringJava注册BeanDefinition解析与注册
 
 - 查资料熟悉 spring 的模块组成并记忆
 
-### 20201108
+### 20201107
 #### 123 | 引入动机：为什么Spring不使用Java标准资源管理，而选择重新发明轮子？
 
 无
@@ -719,13 +719,38 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 >
 > org.geekbang.thinking.in.spring.resource.springx
  
-#### 
-#### 
-#### 
-#### 
-####
-#### 
-#### 
+ 
+### 20201108 
+#### 143 | Spring校验使用场景：为什么Validator并不只是Bean的校验？
+
+无
+
+#### 144 | Validator接口设计：画虎不成反类犬？
+
+> 了解 org.springframework.validation.Validator + org.springframework.validation.ValidationUtils
+
+#### 145 | Errors接口设计：复杂得没有办法理解？
+
+> org.geekbang.thinking.in.spring.validation.ErrorsMessageDemo
+
+#### 146 | Errors文案来源：Spring国际化充当临时工？
+
+> 了解 org.springframework.validation.Errors（不常用）
+
+#### 147 | 自定义Validator：为什么说Validator容易实现，却难以维护？
+
+> org.geekbang.thinking.in.spring.validation.ValidatorDemo
+
+#### 148 | Validator的救赎：如果没有Bean Validation，Validator将会在哪里吗？
+
+> src/main/resources/META-INF/bean-validation-context.xml
+>
+> org.geekbang.thinking.in.spring.validation.SpringBeanValidationDemo
+
+#### 149 | 面试题精选
+
+无
+
 #### 
 #### 
 #### 

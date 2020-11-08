@@ -16,15 +16,12 @@
  */
 package org.geekbang.thinking.in.spring.validation;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Validator;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
-import sun.security.krb5.internal.APRep;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -44,18 +41,18 @@ public class SpringBeanValidationDemo {
         // 启动 Spring 应用上下文
         ConfigurableApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/bean-validation-context.xml");
 
-//        Validator validator = applicationContext.getBean(Validator.class);
-//        System.out.println(validator instanceof LocalValidatorFactoryBean);
+        Validator validator = applicationContext.getBean(Validator.class);
+        System.out.println(validator instanceof LocalValidatorFactoryBean);
 
         UserProcessor userProcessor = applicationContext.getBean(UserProcessor.class);
-        userProcessor.process(new User());
+        userProcessor.process(new User()); // username 为空，不能通过校验
 
         // 关闭应用上下文
         applicationContext.close();
     }
 
     @Component
-    @Validated
+    @Validated // @Validated 见 org.springframework.validation.beanvalidation.MethodValidationPostProcessor
     static class UserProcessor {
 
         public void process(@Valid User user) {
