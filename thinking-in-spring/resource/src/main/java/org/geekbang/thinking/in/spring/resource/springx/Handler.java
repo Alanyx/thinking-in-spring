@@ -32,7 +32,7 @@ import java.nio.charset.Charset;
  */
 public class Handler extends sun.net.www.protocol.x.Handler {
 
-    // -Djava.protocol.handler.pkgs=org.geekbang.thinking.in.spring.resource
+    // todo 注意需要加参数 -Djava.protocol.handler.pkgs=org.geekbang.thinking.in.spring.resource
     public static void main(String[] args) throws IOException {
         // springx 协议
         URL url = new URL("springx:///META-INF/production.properties"); // 类似于 classpath:/META-INF/default.properties

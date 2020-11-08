@@ -655,17 +655,70 @@ SpringJava注册BeanDefinition解析与注册
 
 - 查资料熟悉 spring 的模块组成并记忆
 
-#### 
-#### 
-#### 
-####
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
+### 20201108
+#### 123 | 引入动机：为什么Spring不使用Java标准资源管理，而选择重新发明轮子？
+
+无
+
+#### 124 | Java标准资源管理：Java URL资源管理存在哪些潜规则？
+
+> 了解 java.net.URLStreamHandlerFactory + java.net.URLStreamHandler + java.net.URL
+ 
+#### 125 | Spring资源接口：Resource接口有哪些语义？它是否“借鉴”了SUN的实现呢？
+
+> 了解 
+> 输入流 org.springframework.core.io.InputStreamSource
+ 只读资源 org.springframework.core.io.Resource
+ 可写资源 org.springframework.core.io.WritableResource
+ 编码资源 org.springframework.core.io.support.EncodedResource
+ 上下文资源 org.springframework.core.io.ContextResource
+
+#### 126 | Spring内建Resource实现：Spring框架提供了多少种内建的Resource实现呢？
+
+```
+了解基本概要
+Bean 定义 org.springframework.beans.factory.support.BeanDefinit ionResource
+数组 org.springframework.core.io.ByteArrayResource
+类路径(classpath:/) org.springframework.core.io.ClassPathResource
+文件系统(file:/)org.springframework.core.io.FileSystemResource
+URL(URL 支持的协议)org.springframework.core.io.UrlResource
+ServletContext org.springframework.web.context.support.ServletConte xtResource
+```
+
+#### 127 | Spring Resource接口扩展：Resource能否支持写入以及字符集编码？
+
+> org.geekbang.thinking.in.spring.resource.EncodedFileSystemResourceDemo
+
+#### 128 | Spring资源加载器：为什么说Spring应用上下文也是一种Spring资源加载器？
+
+> org.geekbang.thinking.in.spring.resource.EncodedFileSystemResourceLoaderDemo
+
+#### 129 | Spring通配路径资源加载器：如何理解路径通配Ant模式？
+
+无
+
+#### 130 | Spring通配路径模式扩展：如何扩展路径匹配的规则？
+
+> org.geekbang.thinking.in.spring.resource.CustomizedResourcePatternResolverDemo
+>
+> org.geekbang.thinking.in.spring.resource.util.ResourceUtils
+
+#### 131 | 依赖注入Spring Resource：如何在XML和Java注解场景注入Resource对象？
+
+> org.geekbang.thinking.in.spring.resource.InjectingResourceDemo
+
+#### 132 | 依赖注入ResourceLoader：除了ResourceLoaderAware回调注入，还有哪些注入方法？
+
+- 复习 ResourceLoaderAware 的加载时期/顺序
+
+> org.geekbang.thinking.in.spring.resource.InjectingResourceLoaderDemo
+
+#### 133 | 面试题精选
+
+> sun.net.www.protocol.x 包路径
+>
+> org.geekbang.thinking.in.spring.resource.springx
+ 
 #### 
 #### 
 #### 

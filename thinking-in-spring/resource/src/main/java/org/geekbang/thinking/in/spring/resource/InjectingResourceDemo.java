@@ -17,7 +17,6 @@
 package org.geekbang.thinking.in.spring.resource;
 
 import org.geekbang.thinking.in.spring.resource.util.ResourceUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.io.Resource;
@@ -36,12 +35,15 @@ import java.util.stream.Stream;
  */
 public class InjectingResourceDemo {
 
+    // 单个依赖注入
     @Value("classpath:/META-INF/default.properties")
     private Resource defaultPropertiesResource;
 
+    // 集合依赖注入
     @Value("classpath*:/META-INF/*.properties")
     private Resource[] propertiesResources;
 
+    // 依赖注入外部化配置
     @Value("${user.dir}")
     private String currentProjectRootPath;
 
@@ -55,7 +57,6 @@ public class InjectingResourceDemo {
     }
 
     public static void main(String[] args) {
-
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         // 注册当前类作为 Configuration Class
         context.register(InjectingResourceDemo.class);

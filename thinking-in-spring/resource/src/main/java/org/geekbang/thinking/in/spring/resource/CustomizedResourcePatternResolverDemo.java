@@ -45,15 +45,19 @@ public class CustomizedResourcePatternResolverDemo {
         // *.java
         String currentPackagePath = "/" + System.getProperty("user.dir") + "/thinking-in-spring/resource/src/main/java/org/geekbang/thinking/in/spring/resource/";
         String locationPattern = currentPackagePath + "*.java";
+//        String locationPattern = currentPackagePath + "*.md";
         PathMatchingResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver(new FileSystemResourceLoader());
 
+        // 扩展 spring 通配路径资源
         resourcePatternResolver.setPathMatcher(new JavaFilePathMatcher());
 
         Resource[] resources = resourcePatternResolver.getResources(locationPattern);
-
         Stream.of(resources).map(ResourceUtils::getContent).forEach(System.out::println);
     }
 
+    /**
+     * 重置 PathMatcher 来扩展 Spring 通配路径资源
+     */
     static class JavaFilePathMatcher implements PathMatcher {
 
         @Override
