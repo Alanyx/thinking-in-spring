@@ -843,9 +843,17 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 
 - org.geekbang.thinking.in.spring.conversion.PropertiesToStringConverter
 
-171 | 统一类型转换服务：ConversionService足够通用吗？
-172 | ConversionService作为依赖-能够同时作为依赖查找和依赖注入的来源吗？
-173 | 面试题精选
+#### 171 | 统一类型转换服务：ConversionService足够通用吗？
+
+- 无
+
+#### 172 | ConversionService作为依赖-能够同时作为依赖查找和依赖注入的来源吗？
+
+- 无
+
+#### 173 | 面试题精选
+
+- 实践 Convert、GenericConverter、ConditionalConverter 的扩展(没有什么技巧，熟能生巧，动手实践)
 
 ## 第十六章：Spring泛型处理（Generic Resolution） (8讲)
 
@@ -857,9 +865,10 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 179 | Spring 4.2泛型优化实现-ResolvableType
 180 | ResolvableType的局限性：形式比人强？
 181 | 面试题精选
+
 第十七章：Spring事件（Events） (20讲)
 
-
+
 182 | Java事件/监听器编程模型：为什么Java中没有提供标准实现？
 183 | 面向接口的事件/监听器设计模式：单事件监听和多事件监听怎么选？
 184 | 面向注解的事件/监听器设计模式：便利也会带来伤害？

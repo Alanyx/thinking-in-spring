@@ -36,10 +36,12 @@ public class SpringCustomizedPropertyEditorDemo {
         // todo ConfigurableApplicationContext 会自动 refresh()，不要重复 refresh()
         ConfigurableApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/property-editors-context.xml");
 
-        // AbstractApplicationContext -> "conversionService" ConversionService Bean
+        // 完整的链路：
+        // AbstractApplicationContext 启动 -> 寻找 "conversionService" ConversionService Bean
         // -> ConfigurableBeanFactory#setConversionService(ConversionService)
         // -> AbstractAutowireCapableBeanFactory.instantiateBean
         // -> AbstractBeanFactory#getConversionService ->
+
         // BeanDefinition -> BeanWrapper -> 属性转换（数据来源：PropertyValues）->
         // setPropertyValues(PropertyValues) -> TypeConverter#convertIfNecessnary
         // TypeConverterDelegate#convertIfNecessnary  -> PropertyEditor or ConversionService
