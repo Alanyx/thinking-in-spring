@@ -42,6 +42,7 @@ public class PropertiesToStringConverter implements ConditionalGenericConverter 
 
     @Override
     public Set<ConvertiblePair> getConvertibleTypes() {
+        // 采用单一的实现
         return Collections.singleton(new ConvertiblePair(Properties.class, String.class));
     }
 
@@ -49,13 +50,10 @@ public class PropertiesToStringConverter implements ConditionalGenericConverter 
     public Object convert(Object source, TypeDescriptor sourceType, TypeDescriptor targetType) {
 
         Properties properties = (Properties) source;
-
         StringBuilder textBuilder = new StringBuilder();
-
         for (Map.Entry<Object, Object> entry : properties.entrySet()) {
             textBuilder.append(entry.getKey()).append("=").append(entry.getValue()).append(System.getProperty("line.separator"));
         }
-
         return textBuilder.toString();
     }
 }

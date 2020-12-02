@@ -60,8 +60,14 @@ public class User implements BeanNameAware {
 
     private Company company;
 
+    /**
+     * 用于类型转换章节实践
+     */
     private Properties context;
 
+    /**
+     * 用于类型转换章节实践
+     */
     private String contextAsText;
 
     /**

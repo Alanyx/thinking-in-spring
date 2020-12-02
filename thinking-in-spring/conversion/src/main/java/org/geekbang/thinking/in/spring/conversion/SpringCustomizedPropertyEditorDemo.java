@@ -18,7 +18,6 @@ package org.geekbang.thinking.in.spring.conversion;
 
 import org.geekbang.thinking.in.spring.ioc.overview.domain.User;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.beans.PropertyEditor;
@@ -34,6 +33,7 @@ public class SpringCustomizedPropertyEditorDemo {
 
     public static void main(String[] args) {
         // 创建并且启动 BeanFactory 容器，
+        // todo ConfigurableApplicationContext 会自动 refresh()，不要重复 refresh()
         ConfigurableApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/property-editors-context.xml");
 
         // AbstractApplicationContext -> "conversionService" ConversionService Bean

@@ -787,6 +787,156 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 
 无
 
+## 第十五章：Spring类型转换（Type Conversion） (15讲)
+
+#### 159 | Spring类型转换的实现：Spring提供了哪几种类型转换的实现？
+
+> 20201201
+
+- 关键源码: org.springframework.validation.DataBinder
+
+- 关键源码: 和 org.springframework.beans.BeanWrapper
+
+#### 160 | 使用场景：Spring类型转换各自的使用场景以及发展脉络是怎样的？
+
+- 无
+
+#### 161 | 基于JavaBeans接口的类型转换：Spring是如何扩展PropertyEditor接口实现类型转换的？
+
+- org.geekbang.thinking.in.spring.conversion.PropertyEditorDemo 和 org.geekbang.thinking.in.spring.conversion.StringToPropertiesPropertyEditor
+
+#### 162 | Spring内建PropertyEditor扩展：哪些常见类型被Spring内建PropertyEditor实现？
+
+- 简单查看 org.springframework.beans.propertyeditors包下类和基本实现
+
+#### 163 | 自定义PropertyEditor扩展：不尝试怎么知道它好不好用？
+
+- org.geekbang.thinking.in.spring.conversion.CustomizedPropertyEditorRegistrar 
+和 org.geekbang.thinking.in.spring.conversion.SpringCustomizedPropertyEditorDemo
+和 src/main/resources/META-INF/property-editors-context.xml
+
+#### 164 | SpringPropertyEditor的设计缺陷：为什么基于PropertyEditor扩展并不适合作为类型转换？
+
+- 无
+
+#### 165 | Spring 3通用类型转换接口：为什么Converter接口设计比PropertyEditor更合理？
+
+- 无
+
+#### 166 | Spring内建类型转换器：Spring的内建类型转换器到底有多丰富？
+
+- 无
+
+#### 167 | Converter接口的局限性：哪种类型转换场景Converter无法满足？有什么应对之策？
+
+- 无
+
+#### 168 | GenericConverter接口：为什么GenericConverter比Converter更通用？
+
+- org.springframework.core.convert.converter.GenericConverter
+
+#### 169 | 优化GenericConverter接口：为什么GenericConverter需要补充条件判断？
+
+- 了解 org.springframework.core.convert.converter.ConditionalGenericConverter
+
+#### 170 | 扩展Spring类型转换器：为什么最终注册的都是ConditionalGenericConverter？
+
+- org.geekbang.thinking.in.spring.conversion.PropertiesToStringConverter
+
+171 | 统一类型转换服务：ConversionService足够通用吗？
+172 | ConversionService作为依赖-能够同时作为依赖查找和依赖注入的来源吗？
+173 | 面试题精选
+
+## 第十六章：Spring泛型处理（Generic Resolution） (8讲)
+
+174 | Java泛型基础：泛型参数信息在擦写后还会存在吗？
+175 | Java 5类型接口-Type：Java类型到底是Type还是Class？
+176 | Spring泛型类型辅助类：GenericTypeResolver
+177 | Spring泛型集合类型辅助类：GenericCollectionTypeResolver
+178 | Spring方法参数封装-MethodParameter：不仅仅是方法参数
+179 | Spring 4.2泛型优化实现-ResolvableType
+180 | ResolvableType的局限性：形式比人强？
+181 | 面试题精选
+第十七章：Spring事件（Events） (20讲)
+
+
+182 | Java事件/监听器编程模型：为什么Java中没有提供标准实现？
+183 | 面向接口的事件/监听器设计模式：单事件监听和多事件监听怎么选？
+184 | 面向注解的事件/监听器设计模式：便利也会带来伤害？
+185 | Spring标准事件-ApplicationEvent：为什么不用EventObject？
+186 | 基于接口的Spring事件监听器：ApplicationListener为什么选择单事件监听模式？
+187 | 基于注解的Spring事件监听器：@EventListener有哪些潜在规则？
+188 | 注册Spring ApplicationListener：直接注册和间接注册有哪些差异？
+189 | Spring事件发布器：Spring 4.2给ApplicationEventPublisher带来哪些变化？
+190 | Spring 层次性上下文事件传播：这是一个Feature还是一个Bug？
+191 | Spring内建事件（Built-in Events）：为什么ContextStartedEvent和 ContextStoppedEvent是鸡肋事件？ - 深入剖析源码，掌握核心编程特性
+192 | Spring 4.2 Payload事件：为什么说PayloadApplicationEvent并非一个良好的设计？
+193 | 自定义Spring事件：自定义事件业务用得上吗？
+194 | 依赖注入ApplicationEventPublisher：事件推送还会引起Bug？
+195 | 依赖查找ApplicationEventPublisher：ApplicationEventPublisher从何而来？
+196 | ApplicationEventPublisher底层实现：ApplicationEventMulticaster也是Java Observable的延伸？
+197 | 同步和异步Spring事件广播：Spring对J.U.C Executor接口的理解不够？
+198 | Spring 4.1事件异常处理：ErrorHandler使用有怎样的限制？
+199 | Spring事件/监听器实现原理：面向接口和注解的事件/监听器实现有区别吗？
+200 | 课外资料：Spring Boot和Spring Cloud事件也是Spring事件？
+201 | 面试题精选
+第十八章：Spring注解（Annotations） (12讲)
+
+202 | Spring注解驱动编程发展历程
+203 | Spring核心注解场景分类
+204 | Spring注解编程模型
+205 | Spring元注解（Meta-Annotations）
+206 | Spring模式注解（Stereotype Annotations）
+207 | Spring组合注解（Composed Annotations）
+208 | Spring注解属性别名（Attribute Aliases）
+209 | Spring注解属性覆盖（Attribute Overrides）
+210 | Spring @Enable模块驱动
+211 | Spring条件注解
+212 | 课外资料：Spring Boot和Spring Cloud是怎样在Spring注解内核上扩展的?
+213 | 面试题精选
+第十九章：Spring Environment抽象（Environment Abstraction） (16讲)
+
+
+214 | 理解Spring Environment抽象
+215 | Spring Environment接口使用场景
+216 | Environment占位符处理
+217 | 理解条件配置Spring Profiles
+218 | Spring 4重构@Profile
+219 | 依赖注入Environment
+220 | 依赖查找Environment
+221 | 依赖注入@Value
+222 | Spring类型转换在Environment中的运用
+223 | Spring类型转换在@Value中的运用
+224 | Spring配置属性源PropertySource
+225 | Spring內建的配置属性源
+226 | 基于注解扩展Spring配置属性源
+227 | 基于API扩展Spring外部化配置属性源
+228 | 课外资料：Spring 4.1测试配置属性源-@TestPropertySource
+229 | 面试题精选
+第二十章：Spring应用上下文生命周期（Container Lifecycle） (21讲)
+
+230 | Spring应用上下文启动准备阶段
+231 | BeanFactory创建阶段
+232 | BeanFactory准备阶段
+233 | BeanFactory后置处理阶段
+234 | BeanFactory注册BeanpostProcessor阶段
+235 | 初始化内建Bean：MessageSource
+236 | 初始化内建Bean：Spring事件广播器
+237 | Spring应用上下文刷新阶段
+238 | Spring事件监听器注册阶段
+239 | BeanFactory初始化完成阶段
+240 | Spring应用上下刷新完成阶段
+241 | Spring应用上下文启动阶段
+242 | Spring应用上下文停止阶段
+243 | Spring应用上下文关闭阶段
+244 | 面试题精选
+245 | 结束语
+加餐1：为什么说ObjectFactory提供的是延迟依赖查找?
+加餐2 | 依赖查找（注入）的Bean会被缓存吗？
+加餐3 | @Bean的处理流程是怎样的？
+加餐4 | BeanFactory如何处理循环依赖的？
+加餐5 | MyBatis与Spring Framework是如何集成的？
+
 ####
 #### 
 #### 
