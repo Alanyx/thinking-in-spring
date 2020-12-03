@@ -35,7 +35,7 @@ public class GenericDemo {
         // 编译时错误
         // list.add(1);
 
-        // 泛型擦写
+        // 泛型擦写(编译器被"欺骗")：对于运行时没有太多的约束
         Collection temp = list;
         // 编译通过
         temp.add(1);

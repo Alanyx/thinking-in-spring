@@ -25,10 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.springframework.core.GenericTypeResolver.resolveReturnType;
-import static org.springframework.core.GenericTypeResolver.resolveReturnTypeArgument;
-
 /**
+ * 重要概念: 泛型参数类型具体化(编译时已确定)
  * {@link GenericTypeResolver} 示例
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
@@ -48,7 +46,7 @@ public class GenericTypeResolverDemo {
         // StringList 也是 List 泛型参数类型的具体化
         displayReturnTypeGenericInfo(GenericTypeResolverDemo.class, List.class, "getStringList");
 
-        // 具备 ParameterizedType 返回，否则 null
+        // 具备 ParameterizedType 返回，否则 null(比如下面 ArrayList<Object> 是 List<E>)
 
         // TypeVariable
         Map<TypeVariable, Type> typeVariableMap = GenericTypeResolver.getTypeVariableMap(StringList.class);
@@ -60,7 +58,7 @@ public class GenericTypeResolverDemo {
         return null;
     }
 
-    public static ArrayList<Object> getList() { // 泛型参数类型具体化
+    public static ArrayList<Object> getList() { // 泛型参数类型具体化（此处指定泛型为 Object）
         return null;
     }
 
@@ -68,18 +66,23 @@ public class GenericTypeResolverDemo {
         return null;
     }
 
-    private static void displayReturnTypeGenericInfo(Class<?> containingClass, Class<?> genericIfc, String methodName, Class... argumentTypes) throws NoSuchMethodException {
+    private static void displayReturnTypeGenericInfo(Class<?> containingClass, Class<?> genericInfo, String methodName, Class... argumentTypes) throws NoSuchMethodException {
         Method method = containingClass.getMethod(methodName, argumentTypes);
 
         // 声明类 GenericTypeResolverDemo.class
-        Class<?> returnType = resolveReturnType(method, containingClass);
+        Class<?> returnType = GenericTypeResolver.resolveReturnType(method, containingClass);
 
         // 常规类作为方法返回值
-        System.out.printf("GenericTypeResolver.resolveReturnType(%s,%s) = %s\n", methodName, containingClass.getSimpleName(), returnType);
+        System.out.printf("GenericTypeResolver.resolveReturnType(%s,%s) = %s\n",
+                methodName,
+                containingClass.getSimpleName(),
+                returnType);
         // 常规类型不具备泛型参数类型 List<E>
-        Class<?> returnTypeArgument = resolveReturnTypeArgument(method, genericIfc);
-        System.out.printf("GenericTypeResolver.resolveReturnTypeArgument(%s,%s) = %s\n", methodName, containingClass.getSimpleName(), returnTypeArgument);
-
+        Class<?> returnTypeArgument = GenericTypeResolver.resolveReturnTypeArgument(method, genericInfo);
+        System.out.printf("GenericTypeResolver.resolveReturnTypeArgument(%s,%s) = %s\n",
+                methodName,
+                containingClass.getSimpleName(),
+                returnTypeArgument);
     }
 
 }

@@ -857,16 +857,39 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 
 ## 第十六章：Spring泛型处理（Generic Resolution） (8讲)
 
-174 | Java泛型基础：泛型参数信息在擦写后还会存在吗？
-175 | Java 5类型接口-Type：Java类型到底是Type还是Class？
-176 | Spring泛型类型辅助类：GenericTypeResolver
-177 | Spring泛型集合类型辅助类：GenericCollectionTypeResolver
-178 | Spring方法参数封装-MethodParameter：不仅仅是方法参数
-179 | Spring 4.2泛型优化实现-ResolvableType
-180 | ResolvableType的局限性：形式比人强？
-181 | 面试题精选
+#### 174 | Java泛型基础：泛型参数信息在擦写后还会存在吗？
 
-第十七章：Spring事件（Events） (20讲)
+- org.geekbang.thinking.in.spring.generic.GenericDemo
+
+#### 175 | Java 5类型接口-Type：Java类型到底是Type还是Class？
+
+- org.geekbang.thinking.in.spring.generic.GenericAPIDemo
+
+#### 176 | Spring泛型类型辅助类：GenericTypeResolver
+
+- org.geekbang.thinking.in.spring.generic.GenericTypeResolverDemo
+
+#### 177 | Spring泛型集合类型辅助类：GenericCollectionTypeResolver
+
+- org.geekbang.thinking.in.spring.generic.GenericCollectionTypeResolverDemo
+
+#### 178 | Spring方法参数封装-MethodParameter：不仅仅是方法参数
+
+- 了解 org.springframework.core.MethodParameter
+
+#### 179 | Spring 4.2泛型优化实现-ResolvableType
+
+- org.geekbang.thinking.in.spring.generic.ResolvableTypeDemo
+
+#### 180 | ResolvableType的局限性：形式比人强？
+
+- 无
+
+#### 181 | 面试题精选
+
+- 使用 ResolvableType 简化开发
+
+## 第十七章：Spring事件（Events） (20讲)
 
 
 182 | Java事件/监听器编程模型：为什么Java中没有提供标准实现？

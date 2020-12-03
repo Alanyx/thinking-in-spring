@@ -13,6 +13,7 @@
     <artifactId>generic</artifactId>
 
     <properties>
+        <!--org.springframework.core.GenericCollectionTypeResolver 最高支持 4.3 版本，需要降低版本-->
         <spring.version>4.3.26.RELEASE</spring.version>
     </properties>
 

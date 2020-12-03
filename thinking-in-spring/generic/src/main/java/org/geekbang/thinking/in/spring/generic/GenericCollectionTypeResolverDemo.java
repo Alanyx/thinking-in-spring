@@ -41,13 +41,14 @@ public class GenericCollectionTypeResolverDemo {
         // getCollectionType 返回具体化泛型参数类型集合的成员类型 = String
         System.out.println(GenericCollectionTypeResolver.getCollectionType(StringList.class));
 
+        // ArrayList 没有具体化，为 null
         System.out.println(GenericCollectionTypeResolver.getCollectionType(ArrayList.class));
 
         // 获取字段
-        Field field = GenericCollectionTypeResolverDemo.class.getDeclaredField("stringList");
-        System.out.println(GenericCollectionTypeResolver.getCollectionFieldType(field));
+        Field field1 = GenericCollectionTypeResolverDemo.class.getDeclaredField("stringList");
+        System.out.println(GenericCollectionTypeResolver.getCollectionFieldType(field1));
 
-        field = GenericCollectionTypeResolverDemo.class.getDeclaredField("strings");
-        System.out.println(GenericCollectionTypeResolver.getCollectionFieldType(field));
+        Field field2 = GenericCollectionTypeResolverDemo.class.getDeclaredField("strings");
+        System.out.println(GenericCollectionTypeResolver.getCollectionFieldType(field2));
     }
 }

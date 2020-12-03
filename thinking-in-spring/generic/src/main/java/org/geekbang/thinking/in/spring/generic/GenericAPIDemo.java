@@ -23,7 +23,9 @@ import java.util.ArrayList;
 import java.util.stream.Stream;
 
 /**
- * Java 泛型 API 示例
+ * Java 泛型 API 示例：参考 PPT Java 5 类型接口
+ * <p>
+ * Java 5 类型接口:见 Type 类的注释
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
@@ -44,10 +46,9 @@ public class GenericAPIDemo {
         // 泛型参数类型 parameterized type
         ParameterizedType parameterizedType = (ParameterizedType) ArrayList.class.getGenericSuperclass();
 
-        //  parameterizedType.getRawType() = java.util.AbstractList
+        //  parameterizedType.getRawType() ==> java.util.AbstractList
 
         // 泛型类型变量 Type Variable:
-
         System.out.println(parameterizedType.toString());
 
         // <E>
