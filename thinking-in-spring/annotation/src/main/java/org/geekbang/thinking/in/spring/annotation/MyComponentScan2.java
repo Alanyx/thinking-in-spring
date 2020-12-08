@@ -16,7 +16,6 @@
  */
 package org.geekbang.thinking.in.spring.annotation;
 
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.stereotype.Component;
 
@@ -37,20 +36,20 @@ public @interface MyComponentScan2 {
     @AliasFor(annotation = MyComponentScan.class, attribute = "scanBasePackages") // 隐性别名
             String[] basePackages() default {};
 
+    // 有传递性
     // @MyComponentScan2.basePackages
     // -> @MyComponentScan.scanBasePackages
     // -> @ComponentScan.value
     // -> @ComponentScan.basePackages
 
-
     /**
-     * 与元注解 @MyComponentScan 同名属性
+     * 与元注解 @MyComponentScan 同名属性，将会覆盖该属性(类似于子类覆盖父类)
      *
      * @return
      */
     String[] scanBasePackages() default {};
 
-
+    // 显性覆盖
     @AliasFor("scanBasePackages")
     String[] packages() default {}; // packages 覆盖了 scanBasePackages 覆盖了元注解 scanBasePackages
 

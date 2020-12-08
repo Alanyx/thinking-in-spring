@@ -34,12 +34,17 @@ import java.lang.annotation.*;
 @ComponentScan
 public @interface MyComponentScan {
 
-    @AliasFor(annotation = ComponentScan.class, attribute = "value") // 隐性别名
-            // "多态"，子注解提供新的属性方法引用"父"（元）注解中的属性方法
-    String[] scanBasePackages() default {"#"};
+    /**
+     * 属性别名
+     *
+     * @return
+     */
+    @AliasFor(annotation = ComponentScan.class, attribute = "basePackages") // 隐性别名
+//    @AliasFor(annotation = ComponentScan.class, attribute = "value") // 隐性别名
+            // 隐性别名类似于"多态"，子注解提供新的属性方法引用"父"（元）注解中的属性方法
+            String[] scanBasePackages() default {"#"};
 
-    // scanBasePackages ->
-    //          @AliasFor @ComponentScan.basePackages -> @AliasFor @ComponentScan.value (显性别名）
-    // @AliasFor @ComponentScan.value // 传递隐性别名
+    // scanBasePackages -> @AliasFor @ComponentScan.basePackages -> @AliasFor @ComponentScan.value (显性别名）
+//     @AliasFor @ComponentScan.value; // 传递隐性别名
 
 }

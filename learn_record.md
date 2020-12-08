@@ -912,23 +912,63 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 199 | Spring事件/监听器实现原理：面向接口和注解的事件/监听器实现有区别吗？
 200 | 课外资料：Spring Boot和Spring Cloud事件也是Spring事件？
 201 | 面试题精选
-第十八章：Spring注解（Annotations） (12讲)
 
-202 | Spring注解驱动编程发展历程
-203 | Spring核心注解场景分类
-204 | Spring注解编程模型
-205 | Spring元注解（Meta-Annotations）
-206 | Spring模式注解（Stereotype Annotations）
-207 | Spring组合注解（Composed Annotations）
-208 | Spring注解属性别名（Attribute Aliases）
-209 | Spring注解属性覆盖（Attribute Overrides）
+## 第十八章：Spring注解（Annotations） (12讲)
+
+#### 202 | Spring注解驱动编程发展历程                                                      
+                                                                        
+-                                                                         spring 1.x 例如: org.springframework.transaction.annotation.Transactional 和 org.springframework.jmx.export.annotation.ManagedResource
+
+-                                                                         spring 2.x 例如: org.springframework.stereotype.Component/Repository/Service/Controller
+
+-                                                                         spring 3.x 例如: org.springframework.context.annotation.Configuration
+
+-                                                                         spring 4.x 例如: org.springframework.context.annotation.Conditional
+
+-                                                                         spring 5.x 例如: org.springframework.stereotype.Indexed
+
+#### 203 | Spring核心注解场景分类
+
+- 熟悉分类
+
+#### 204 | Spring注解编程模型
+
+- 无
+
+#### 205 | Spring元注解（Meta-Annotations）
+
+- 找资料了解 java.lang.annotation.Inherited
+
+#### 206 | Spring模式注解（Stereotype Annotations）
+
+- org.geekbang.thinking.in.spring.annotation.ComponentScanDemo
+
+- org.geekbang.thinking.in.spring.annotation.MyComponent 和 org.geekbang.thinking.in.spring.annotation.MyComponent2
+
+- org.geekbang.thinking.in.spring.annotation.TestClass
+
+#### 207 | Spring组合注解（Composed Annotations）
+
+- 查资料了解 AnnotationAttributes
+
+#### 208 | Spring注解属性别名（Attribute Aliases）
+
+- org.geekbang.thinking.in.spring.annotation.MyComponentScan 和 org.geekbang.thinking.in.spring.annotation.MyComponentScan
+
+#### 209 | Spring注解属性覆盖（Attribute Overrides）
+
+- org.geekbang.thinking.in.spring.annotation.MyComponentScan
+
+- org.geekbang.thinking.in.spring.annotation.AttributeOverridesDemo
+
 210 | Spring @Enable模块驱动
 211 | Spring条件注解
 212 | 课外资料：Spring Boot和Spring Cloud是怎样在Spring注解内核上扩展的?
 213 | 面试题精选
+
+
 第十九章：Spring Environment抽象（Environment Abstraction） (16讲)
 
-
 214 | 理解Spring Environment抽象
 215 | Spring Environment接口使用场景
 216 | Environment占位符处理

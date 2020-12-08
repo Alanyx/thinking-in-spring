@@ -25,6 +25,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * @since
  */
 @MyComponentScan2(packages = "org.geekbang.thinking.in.spring.annotation")
+// packages 是 scanBasePackages de的别名
 // @MyComponentScan2.scanBasePackages  <- @MyComponentScan.scanBasePackages 隐性覆盖
 public class AttributeOverridesDemo {
 

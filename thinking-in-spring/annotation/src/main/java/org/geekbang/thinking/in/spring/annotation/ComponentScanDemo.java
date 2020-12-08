@@ -28,9 +28,11 @@ import org.springframework.stereotype.Component;
  * @see ComponentScan
  * @since
  */
-// basePackages() @AliasFor value()
-// value() @AliasFor basePackages()
+//  @AliasFor basePackages 与 value 等效
+// 演示2
 @MyComponentScan2(basePackages = "org.geekbang.thinking.in.spring.annotation") // 指定 Class-Path(s)
+
+// 演示1
 //@ComponentScan(value = "org.geekbang.thinking.in.spring.annotation") // 指定 Class-Path(s)
 public class ComponentScanDemo {
 
@@ -39,7 +41,6 @@ public class ComponentScanDemo {
         // 注册 Configuration Class
         context.register(ComponentScanDemo.class);
 
-        // 启动 Spring 应用上下文
         context.refresh();
 
         // 依赖查找 TestClass Bean
@@ -52,7 +53,6 @@ public class ComponentScanDemo {
 
         System.out.println(testClass);
 
-        // 关闭 Spring 应用上下文
         context.close();
     }
 }
