@@ -961,13 +961,33 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 
 - org.geekbang.thinking.in.spring.annotation.AttributeOverridesDemo
 
-210 | Spring @Enable模块驱动
-211 | Spring条件注解
-212 | 课外资料：Spring Boot和Spring Cloud是怎样在Spring注解内核上扩展的?
-213 | 面试题精选
+#### 210 | Spring @Enable模块驱动
 
+- org.geekbang.thinking.in.spring.annotation.EnableHelloWorld
 
-第十九章：Spring Environment抽象（Environment Abstraction） (16讲)
+- org.geekbang.thinking.in.spring.annotation.EnableModuleDemo
+
+- org.geekbang.thinking.in.spring.annotation.HelloWorldConfiguration
+
+- org.geekbang.thinking.in.spring.annotation.HelloWorldImportBeanDefinitionRegistrar
+
+- org.geekbang.thinking.in.spring.annotation.HelloWorldImportSelector
+
+#### 211 | Spring条件注解
+
+- org.geekbang.thinking.in.spring.annotation.ProfileDemo
+
+- org.geekbang.thinking.in.spring.annotation.EvenProfileCondition
+
+#### 212 | 课外资料：Spring Boot和Spring Cloud是怎样在Spring注解内核上扩展的?
+
+- 查资料了解 Spring Boot和Spring Cloud 基本注解
+
+#### 213 | 面试题精选
+
+- 查资料了解               @EventListener 原理（                                                                                                                            EventListenerMethodProcessor）
+
+## 第十九章：Spring Environment抽象（Environment Abstraction） (16讲)
 
 214 | 理解Spring Environment抽象
 215 | Spring Environment接口使用场景

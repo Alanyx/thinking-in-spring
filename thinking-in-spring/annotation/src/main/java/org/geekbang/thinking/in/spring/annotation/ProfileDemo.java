@@ -41,7 +41,7 @@ public class ProfileDemo {
         // 默认 profiles = [ "odd" ] （兜底 profiles)
         environment.setDefaultProfiles("odd");
         // 增加活跃 profiles
-//        environment.addActiveProfile("even");
+//        environment.addActiveProfile("even"); // 选择偶数
 
         // --spring.profiles.active = even
         // -Dspring.profiles.active=even
@@ -65,7 +65,7 @@ public class ProfileDemo {
 
     @Bean(name = "number")
 //    @Profile("even") // 偶数
-    @Conditional(EvenProfileCondition.class)
+    @Conditional(EvenProfileCondition.class) // 试验2：自己实现 Condition
     public Integer even() {
         return 2;
     }

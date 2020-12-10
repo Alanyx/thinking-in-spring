@@ -27,6 +27,11 @@ import org.springframework.core.type.AnnotationMetadata;
  * @since
  */
 public class HelloWorldImportSelector implements ImportSelector {
+    /**
+     * 该方法可以选择一个或多个（全类名）
+     * @param importingClassMetadata
+     * @return
+     */
     @Override
     public String[] selectImports(AnnotationMetadata importingClassMetadata) {
         return new String[]{"org.geekbang.thinking.in.spring.annotation.HelloWorldConfiguration"}; // 导入
