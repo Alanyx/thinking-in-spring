@@ -26,6 +26,8 @@ import org.springframework.core.env.Environment;
 
 /**
  * 依赖注入 {@link Environment} 示例
+ * <p>
+ * Environment 是单例对象
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see Environment
@@ -33,13 +35,25 @@ import org.springframework.core.env.Environment;
  */
 public class InjectingEnvironmentDemo implements EnvironmentAware, ApplicationContextAware {
 
+    /**
+     * 方法1：EnvironmentAware
+     */
     private Environment environment;
 
+    /**
+     * 方法2：@Autowired Environment
+     */
     @Autowired
     private Environment environment2;
 
+    /**
+     * 方法3：ApplicationContextAware
+     */
     private ApplicationContext applicationContext;
 
+    /**
+     * 方法4：@Autowired Environment
+     */
     @Autowired
     private ApplicationContext applicationContext2;
 
@@ -47,7 +61,6 @@ public class InjectingEnvironmentDemo implements EnvironmentAware, ApplicationCo
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         // 注册 Configuration Class
         context.register(InjectingEnvironmentDemo.class);
-
         // 启动 Spring 应用上下文
         context.refresh();
 
@@ -55,7 +68,7 @@ public class InjectingEnvironmentDemo implements EnvironmentAware, ApplicationCo
 
         System.out.println(injectingEnvironmentDemo.environment);
 
-        System.out.println(injectingEnvironmentDemo.environment == injectingEnvironmentDemo.environment2);
+        System.out.println(injectingEnvironmentDemo.environment == injectingEnvironmentDemo.environment2); // ture,说明是单例
 
         System.out.println(injectingEnvironmentDemo.environment == context.getEnvironment());
 
@@ -69,6 +82,9 @@ public class InjectingEnvironmentDemo implements EnvironmentAware, ApplicationCo
         context.close();
     }
 
+    /**
+     * 方法1：EnvironmentAware
+     */
     @Override
     public void setEnvironment(Environment environment) {
         this.environment = environment;

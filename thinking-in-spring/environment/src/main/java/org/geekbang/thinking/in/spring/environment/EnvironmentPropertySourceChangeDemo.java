@@ -32,7 +32,7 @@ import java.util.Map;
  */
 public class EnvironmentPropertySourceChangeDemo {
 
-    @Value("${user.name}")  // 不具备动态更新能力
+    @Value("${user.name}")  // 不具备动态更新能力：下面刷新后不能更新
     private String userName;
 
     // PropertySource("first-property-source") { user.name = 小马哥}

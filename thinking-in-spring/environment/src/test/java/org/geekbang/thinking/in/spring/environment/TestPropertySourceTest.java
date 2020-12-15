@@ -30,6 +30,8 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * {@link TestPropertySource} 测试示例
+ * <p>
+ * TestPropertySource 的优先级别很高
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see TestPropertySource
@@ -43,7 +45,7 @@ import static org.junit.Assert.assertEquals;
 )
 public class TestPropertySourceTest {
 
-    @Value("${user.name}")  // "mercyblitz" Java System Properties
+    @Value("${user.name}")  // "mercyblitz" 在 Java System Properties 里
     private String userName;
 
     @Autowired
@@ -51,7 +53,7 @@ public class TestPropertySourceTest {
 
     @Test
     public void testUserName() {
-        assertEquals("小马哥", userName);
+        assertEquals("小马哥", userName); // 说明 @TestPropertySource 的优先级别很高
 
         for (PropertySource ps : environment.getPropertySources()) {
             System.out.printf("PropertySource(name=%s) 'user.name' 属性：%s\n", ps.getName(), ps.getProperty("user.name"));

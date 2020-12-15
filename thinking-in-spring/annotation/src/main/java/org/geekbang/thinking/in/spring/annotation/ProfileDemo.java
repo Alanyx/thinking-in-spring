@@ -41,10 +41,9 @@ public class ProfileDemo {
         // 默认 profiles = [ "odd" ] （兜底 profiles)
         environment.setDefaultProfiles("odd");
         // 增加活跃 profiles
-//        environment.addActiveProfile("even"); // 选择偶数
-
-        // --spring.profiles.active = even
-        // -Dspring.profiles.active=even
+//        environment.addActiveProfile("even"); // 选择偶数 方式1
+        // --spring.profiles.active = even 方式2
+        // -Dspring.profiles.active=even 方式3
 
         // 启动 Spring 应用上下文
         context.refresh();

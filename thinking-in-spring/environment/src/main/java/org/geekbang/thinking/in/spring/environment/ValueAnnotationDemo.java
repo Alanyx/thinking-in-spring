@@ -35,12 +35,10 @@ public class ValueAnnotationDemo {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         // 注册 Configuration Class
         context.register(ValueAnnotationDemo.class);
-
         // 启动 Spring 应用上下文
         context.refresh();
 
         ValueAnnotationDemo valueAnnotationDemo = context.getBean(ValueAnnotationDemo.class);
-
         System.out.println(valueAnnotationDemo.userName); // "mercyblitz"
 
         // 关闭 Spring 应用上下文

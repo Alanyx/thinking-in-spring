@@ -989,23 +989,69 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 
 ## 第十九章：Spring Environment抽象（Environment Abstraction） (16讲)
 
-214 | 理解Spring Environment抽象
-215 | Spring Environment接口使用场景
-216 | Environment占位符处理
-217 | 理解条件配置Spring Profiles
-218 | Spring 4重构@Profile
-219 | 依赖注入Environment
-220 | 依赖查找Environment
-221 | 依赖注入@Value
-222 | Spring类型转换在Environment中的运用
-223 | Spring类型转换在@Value中的运用
-224 | Spring配置属性源PropertySource
-225 | Spring內建的配置属性源
-226 | 基于注解扩展Spring配置属性源
-227 | 基于API扩展Spring外部化配置属性源
-228 | 课外资料：Spring 4.1测试配置属性源-@TestPropertySource
-229 | 面试题精选
-第二十章：Spring应用上下文生命周期（Container Lifecycle） (21讲)
+#### 214 | 理解Spring Environment抽象
+
+无
+
+#### 215 | Spring Environment接口使用场景
+
+无 
+
+#### 216 | Environment占位符处理
+
+- src/main/resources/META-INF/placeholders-resolver.xml
+
+- src/main/resources/META-INF/default.properties
+
+#### 217 | 理解条件配置Spring Profiles
+
+无
+
+#### 218 | Spring 4重构@Profile
+
+- 了解 ProfileCondition
+
+#### 219 | 依赖注入Environment
+
+- org.geekbang.thinking.in.spring.environment.InjectingEnvironmentDemo
+
+#### 220 | 依赖查找Environment
+
+- org.geekbang.thinking.in.spring.environment.LookupEnvironmentDemo
+
+#### 221 | 依赖注入@Value
+
+- org.geekbang.thinking.in.spring.environment.ValueAnnotationDemo
+
+#### 222 | Spring类型转换在Environment中的运用
+
+无
+
+#### 223 | Spring类型转换在@Value中的运用
+
+无
+
+#### 224 | Spring配置属性源PropertySource
+
+无
+
+#### 225 | Spring內建的配置属性源
+
+- 了解 PropertySource 和其 org.springframework.context.annotation.ConfigurationClassParser 实现                                                         
+
+#### 226 | 基于注解扩展Spring配置属性源
+
+同上一节
+
+#### 227 | 基于API扩展Spring外部化配置属性源
+
+- org.geekbang.thinking.in.spring.environment.EnvironmentPropertySourceChangeDemo
+
+#### 228 | 课外资料：Spring 4.1测试配置属性源-@TestPropertySource
+
+#### 229 | 面试题精选
+
+## 第二十章：Spring应用上下文生命周期（Container Lifecycle） (21讲)
 
 230 | Spring应用上下文启动准备阶段
 231 | BeanFactory创建阶段
@@ -1023,58 +1069,9 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 243 | Spring应用上下文关闭阶段
 244 | 面试题精选
 245 | 结束语
-加餐1：为什么说ObjectFactory提供的是延迟依赖查找?
+
+加餐1：为什么说 ObjectFactory 提供的是延迟依赖查找?
 加餐2 | 依赖查找（注入）的Bean会被缓存吗？
 加餐3 | @Bean的处理流程是怎样的？
 加餐4 | BeanFactory如何处理循环依赖的？
 加餐5 | MyBatis与Spring Framework是如何集成的？
-
-####
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-####
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-####
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-####
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 
-####
