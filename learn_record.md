@@ -1053,8 +1053,14 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 
 ## 第二十章：Spring应用上下文生命周期（Container Lifecycle） (21讲)
 
-230 | Spring应用上下文启动准备阶段
-231 | BeanFactory创建阶段
+#### 230 | Spring应用上下文启动准备阶段
+
+- 源码阅读分析 org.springframework.context.support.AbstractApplicationContext#refresh()## prepareRefresh()
+
+#### 231 | BeanFactory创建阶段
+
+- 源码阅读分析 org.springframework.context.support.AbstractApplicationContext#refresh()## obtainFreshBeanFactory()
+
 232 | BeanFactory准备阶段
 233 | BeanFactory后置处理阶段
 234 | BeanFactory注册BeanpostProcessor阶段
