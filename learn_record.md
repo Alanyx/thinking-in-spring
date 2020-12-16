@@ -1061,9 +1061,18 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 
 - 源码阅读分析 org.springframework.context.support.AbstractApplicationContext#refresh()## obtainFreshBeanFactory()
 
-232 | BeanFactory准备阶段
-233 | BeanFactory后置处理阶段
-234 | BeanFactory注册BeanpostProcessor阶段
+#### 232 | BeanFactory准备阶段
+
+- 源码阅读分析 org.springframework.context.support.AbstractApplicationContext#refresh()## prepareBeanFactory
+
+#### 233 | BeanFactory后置处理阶段
+
+- 源码阅读分析 org.springframework.context.support.AbstractApplicationContext#refresh()## postProcessBeanFactory 和 invokeBeanFactoryPostProcessors 
+
+#### 234 | BeanFactory注册BeanPostProcessor阶段
+
+- 源码阅读分析 org.springframework.context.support.AbstractApplicationContext#refresh()##registerBeanPostProcessors
+
 235 | 初始化内建Bean：MessageSource
 236 | 初始化内建Bean：Spring事件广播器
 237 | Spring应用上下文刷新阶段
