@@ -42,6 +42,7 @@ public class MyLifecycle implements Lifecycle {
 
     @Override
     public boolean isRunning() {
+        System.out.println("MyLifecycle 是否在运行..." + running);
         return running;
     }
 }

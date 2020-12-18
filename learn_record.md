@@ -1073,17 +1073,49 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 
 - 源码阅读分析 org.springframework.context.support.AbstractApplicationContext#refresh()##registerBeanPostProcessors
 
-235 | 初始化内建Bean：MessageSource
-236 | 初始化内建Bean：Spring事件广播器
-237 | Spring应用上下文刷新阶段
-238 | Spring事件监听器注册阶段
-239 | BeanFactory初始化完成阶段
-240 | Spring应用上下刷新完成阶段
-241 | Spring应用上下文启动阶段
-242 | Spring应用上下文停止阶段
-243 | Spring应用上下文关闭阶段
-244 | 面试题精选
-245 | 结束语
+#### 235 | 初始化内建Bean：MessageSource
+
+- 源码阅读分析 org.springframework.context.support.AbstractApplicationContext#refresh()##initMessageSource
+
+#### 236 | 初始化内建Bean：Spring事件广播器
+
+- 源码阅读分析 org.springframework.context.support.AbstractApplicationContext#refresh()##initApplicationEventMulticaster
+
+#### 237 | Spring应用上下文刷新阶段
+
+- 源码阅读分析onRefresh
+
+#### 238 | Spring事件监听器注册阶段
+
+- 源码阅读分析registerListeners
+
+#### 239 | BeanFactory初始化完成阶段
+
+- 源码阅读分析finishBeanFactoryInitialization
+
+#### 240 | Spring应用上下刷新完成阶段
+
+- 源码阅读分析finishRefresh
+
+- org.geekbang.thinking.in.spring.application.context.lifecycle.LiveBeansViewDemo
+
+#### 241 | Spring应用上下文启动阶段
+
+- 源码阅读分析 start()
+
+#### 242 | Spring应用上下文停止阶段
+
+- 源码阅读分析 stop()
+
+- org.geekbang.thinking.in.spring.application.context.lifecycle.MyLifecycle 和 org.geekbang.thinking.in.spring.application.context.lifecycle.LifecycleDemo
+
+#### 243 | Spring应用上下文关闭阶段
+
+- 源码阅读分析 close()
+
+#### 244 | 面试题精选
+
+#### 245 | 结束语
 
 加餐1：为什么说 ObjectFactory 提供的是延迟依赖查找?
 加餐2 | 依赖查找（注入）的Bean会被缓存吗？

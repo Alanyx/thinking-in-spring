@@ -25,6 +25,8 @@ import static org.springframework.context.support.LiveBeansView.MBEAN_DOMAIN_PRO
 
 /**
  * {@link LiveBeansView} 示例
+ * <p>
+ * 对应 LiveBeansView.registerApplicationContext
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see LiveBeansView
@@ -34,7 +36,8 @@ public class LiveBeansViewDemo {
 
     public static void main(String[] args) throws IOException {
 
-        // 添加 LiveBeansView 的 ObjectName 的 domain
+        /// todo 需要使用 jconsole 连接 JMX 进行查看
+        // 添加 LiveBeansView 的 ObjectName 的 domain (The "MBean Domain" property name.)
         System.setProperty(MBEAN_DOMAIN_PROPERTY_NAME, "org.geekbang.thinking.in.spring");
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
@@ -48,8 +51,8 @@ public class LiveBeansViewDemo {
         System.out.println("按任意键继续...");
         System.in.read();
 
-        context.close();
         // 关闭 Spring 应用上下文
+        context.close();
     }
 
     /**
