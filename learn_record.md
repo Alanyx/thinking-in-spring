@@ -718,7 +718,37 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 > sun.net.www.protocol.x 包路径
 >
 > org.geekbang.thinking.in.spring.resource.springx
- 
+
+## 第十二章：Spring国际化（i18n） (9讲)
+
+#### 134 | Spring国际化使用场景
+
+#### 135 | Spring国际化接口：MessageSource不是技术的创造者，只是技术的搬运工？
+
+- 了解 org.springframework.context.MessageSource
+
+#### 136 | 层次性MessageSource：双亲委派不是ClassLoader的专利吗？
+
+- 同上
+
+#### 137 | Java国际化标准实现：ResourceBundle潜规则多？
+
+- 了解 java.util.ResourceBundle
+
+#### 138 | Java文本格式化：MessageFormat脱离Spring场景，能力更强大？
+
+- org.geekbang.thinking.in.spring.i18n.MessageFormatDemo
+
+#### 139 | MessageSource开箱即用实现：ResourceBundle +MessageFormat组合拳？
+
+无
+
+#### 140 | MessageSource内建依赖：到底“我”是谁？
+
+- AbstractApplicationContext#initMessageSource()
+
+141 | 课外资料：SpringBoot为什么要新建MessageSource Bean？
+142 | 面试题精选
  
 ### 20201108 
 #### 143 | Spring校验使用场景：为什么Validator并不只是Bean的校验？
@@ -891,16 +921,40 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 
 ## 第十七章：Spring事件（Events） (20讲)
 
+#### 182 | Java事件/监听器编程模型：为什么Java中没有提供标准实现？
 
-182 | Java事件/监听器编程模型：为什么Java中没有提供标准实现？
-183 | 面向接口的事件/监听器设计模式：单事件监听和多事件监听怎么选？
-184 | 面向注解的事件/监听器设计模式：便利也会带来伤害？
-185 | Spring标准事件-ApplicationEvent：为什么不用EventObject？
-186 | 基于接口的Spring事件监听器：ApplicationListener为什么选择单事件监听模式？
-187 | 基于注解的Spring事件监听器：@EventListener有哪些潜在规则？
-188 | 注册Spring ApplicationListener：直接注册和间接注册有哪些差异？
-189 | Spring事件发布器：Spring 4.2给ApplicationEventPublisher带来哪些变化？
+- org.geekbang.thinking.in.spring.event.ObserverDemo
+
+#### 183 | 面向接口的事件/监听器设计模式：单事件监听和多事件监听怎么选？
+
+无
+
+#### 184 | 面向注解的事件/监听器设计模式：便利也会带来伤害？
+
+无
+
+#### 185 | Spring标准事件-ApplicationEvent：为什么不用EventObject？
+
+- 了解 org.springframework.context.ApplicationEvent 和 org.springframework.context.event.ApplicationContextEvent
+
+#### 186 | 基于接口的Spring事件监听器：ApplicationListener为什么选择单事件监听模式？
+
+- org.geekbang.thinking.in.spring.event.ApplicationListenerDemo 部分
+
+#### 187 | 基于注解的Spring事件监听器：@EventListener有哪些潜在规则？
+
+- org.geekbang.thinking.in.spring.event.ApplicationListenerDemo 部分（@EventListener）
+
+#### 188 | 注册Spring ApplicationListener：直接注册和间接注册有哪些差异？
+
+- org.geekbang.thinking.in.spring.event.ApplicationListenerDemo 部分（MyApplicationListener)
+
+#### 189 | Spring事件发布器：Spring 4.2给ApplicationEventPublisher带来哪些变化？
+
+- org.geekbang.thinking.in.spring.event.ApplicationListenerDemo 部分（ApplicationEventPublisherAware)
+
 190 | Spring 层次性上下文事件传播：这是一个Feature还是一个Bug？
+
 191 | Spring内建事件（Built-in Events）：为什么ContextStartedEvent和 ContextStoppedEvent是鸡肋事件？ - 深入剖析源码，掌握核心编程特性
 192 | Spring 4.2 Payload事件：为什么说PayloadApplicationEvent并非一个良好的设计？
 193 | 自定义Spring事件：自定义事件业务用得上吗？

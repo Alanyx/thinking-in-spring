@@ -42,7 +42,7 @@ public class MessageFormatDemo {
 
         // 重置 MessageFormatPattern
         // applyPattern
-        messageFormatPattern = "This is a text : {0}, {1}, {2}";
+        messageFormatPattern = "This is a text : {0}, {1}, {2}"; // {2} 没有参数可以替换
         messageFormat.applyPattern(messageFormatPattern);
         result = messageFormat.format(new Object[]{"Hello,World", "666"});
         System.out.println(result);
@@ -56,7 +56,7 @@ public class MessageFormatDemo {
 
         // 重置 Format
         // 根据参数索引来设置 Pattern
-        messageFormat.setFormat(1,new SimpleDateFormat("YYYY-MM-dd HH:mm:ss"));
+        messageFormat.setFormat(1, new SimpleDateFormat("YYYY-MM-dd HH:mm:ss"));
         result = messageFormat.format(new Object[]{planet, new Date(), event});
         System.out.println(result);
     }
