@@ -69,7 +69,7 @@ public class InjectingApplicationEventPublisherDemo implements ApplicationEventP
     }
 
     @Override
-    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) { // #1
+    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) { // #1 （有顺序）
         applicationEventPublisher.publishEvent(new MySpringEvent("The event from ApplicationEventPublisherAware"));
     }
 

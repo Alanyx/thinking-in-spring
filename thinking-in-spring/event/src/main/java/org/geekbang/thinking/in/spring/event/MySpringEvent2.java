@@ -16,10 +16,8 @@
  */
 package org.geekbang.thinking.in.spring.event;
 
-import org.springframework.context.ApplicationEvent;
-
 /**
- * 自定义 Spring 事件
+ * 自定义 Spring 事件（层次性处理，继承了 MySpringEvent2）
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
@@ -40,6 +38,7 @@ public class MySpringEvent2 extends MySpringEvent {
         return (String) super.getSource();
     }
 
+    @Override
     public String getMessage() {
         return getSource();
     }

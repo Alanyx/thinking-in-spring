@@ -36,11 +36,11 @@ public class CustomizedSpringEventDemo {
         // MySpringEvent 以及它子孙类
         context.addApplicationListener(new MySpringEventListener());
 
+        // 相比上面的 MySpringEventListener， 这个 ApplicationListener 会监听所有 Event
         context.addApplicationListener(new ApplicationListener<ApplicationEvent>() {
-
             @Override
             public void onApplicationEvent(ApplicationEvent event) {
-                System.out.println("Event : " + event);
+                System.out.println("所有 Event 都会被监听: " + event);
             }
         });
 
@@ -50,6 +50,7 @@ public class CustomizedSpringEventDemo {
         // 3. 发布自定义 Spring 事件
         // ListenerCacheKey -> MySpringEvent
         context.publishEvent(new MySpringEvent("Hello,World"));
+        // 层次性处理：上面的 MySpringEventListener 包含了 MySpringEvent 以及它子孙类
         context.publishEvent(new MySpringEvent2("2020"));
 
         // 4. 关闭 Spring 应用上下文

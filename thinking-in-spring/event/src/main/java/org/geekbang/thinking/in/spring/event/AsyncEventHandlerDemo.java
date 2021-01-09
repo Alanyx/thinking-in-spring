@@ -16,23 +16,20 @@
  */
 package org.geekbang.thinking.in.spring.event;
 
-import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ApplicationEventMulticaster;
 import org.springframework.context.event.ContextClosedEvent;
-import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.SimpleApplicationEventMulticaster;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
 
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import static java.util.concurrent.Executors.newSingleThreadExecutor;
 
 /**
- * 异步事件处理器示例
+ * 异步事件处理器示例（默认是同步的）
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
@@ -62,33 +59,35 @@ public class AsyncEventHandlerDemo {
             // 同步 -> 异步
             simpleApplicationEventMulticaster.setTaskExecutor(taskExecutor);
 
-            // 添加 ContextClosedEvent 事件处理
+            // 添加 ContextClosedEvent 事件处理（关闭上下文时关闭线程池）
             applicationEventMulticaster.addApplicationListener(new ApplicationListener<ContextClosedEvent>() {
                 @Override
                 public void onApplicationEvent(ContextClosedEvent event) {
+                    // 任务完成时合理的关闭线程池(这里是 ContextClosedEvent 时关闭)
                     if (!taskExecutor.isShutdown()) {
                         taskExecutor.shutdown();
                     }
                 }
             });
 
+            // 添加 ErrorHandler 处理
             simpleApplicationEventMulticaster.setErrorHandler(e -> {
                 System.err.println("当 Spring 事件异常时，原因：" + e.getMessage());
             });
         }
 
-        context.addApplicationListener(new ApplicationListener<MySpringEvent>() {
-            @Override
-            public void onApplicationEvent(MySpringEvent event) {
-                throw new RuntimeException("故意抛出异常");
-            }
-        });
+//        // 测试 ErrorHandler 处理
+//        context.addApplicationListener(new ApplicationListener<MySpringEvent>() {
+//            @Override
+//            public void onApplicationEvent(MySpringEvent event) {
+//                throw new RuntimeException("故意抛出异常");
+//            }
+//        });
 
         // 3. 发布自定义 Spring 事件
         context.publishEvent(new MySpringEvent("Hello,World"));
 
         // 4. 关闭 Spring 应用上下文（ContextClosedEvent）
         context.close();
-
     }
 }

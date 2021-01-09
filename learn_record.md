@@ -953,19 +953,53 @@ ServletContext org.springframework.web.context.support.ServletConte xtResource
 
 - org.geekbang.thinking.in.spring.event.ApplicationListenerDemo 部分（ApplicationEventPublisherAware)
 
-190 | Spring 层次性上下文事件传播：这是一个Feature还是一个Bug？
+#### 190 | Spring 层次性上下文事件传播：这是一个Feature还是一个Bug？
 
-191 | Spring内建事件（Built-in Events）：为什么ContextStartedEvent和 ContextStoppedEvent是鸡肋事件？ - 深入剖析源码，掌握核心编程特性
-192 | Spring 4.2 Payload事件：为什么说PayloadApplicationEvent并非一个良好的设计？
-193 | 自定义Spring事件：自定义事件业务用得上吗？
-194 | 依赖注入ApplicationEventPublisher：事件推送还会引起Bug？
-195 | 依赖查找ApplicationEventPublisher：ApplicationEventPublisher从何而来？
-196 | ApplicationEventPublisher底层实现：ApplicationEventMulticaster也是Java Observable的延伸？
-197 | 同步和异步Spring事件广播：Spring对J.U.C Executor接口的理解不够？
-198 | Spring 4.1事件异常处理：ErrorHandler使用有怎样的限制？
-199 | Spring事件/监听器实现原理：面向接口和注解的事件/监听器实现有区别吗？
-200 | 课外资料：Spring Boot和Spring Cloud事件也是Spring事件？
-201 | 面试题精选
+- org.geekbang.thinking.in.spring.event.HierarchicalSpringEventPropagateDemo
+
+#### 191 | Spring内建事件（Built-in Events）：为什么ContextStartedEvent和 ContextStoppedEvent是鸡肋事件？ - 深入剖析源码，掌握核心编程特性
+
+- org.geekbang.thinking.in.spring.event.ApplicationListenerDemo 部分（4 大事件，如 context.refresh())
+
+#### 192 | Spring 4.2 Payload事件：为什么说PayloadApplicationEvent并非一个良好的设计？
+
+- org.geekbang.thinking.in.spring.event.ApplicationListenerDemo 部分（MyPayloadApplicationEvent)
+
+#### 193 | 自定义Spring事件：自定义事件业务用得上吗？
+
+- org.geekbang.thinking.in.spring.event.MySpringEvent
+
+- org.geekbang.thinking.in.spring.event.MySpringEventListener
+
+- org.geekbang.thinking.in.spring.event.CustomizedSpringEventDemo（部分）
+
+#### 194 | 依赖注入ApplicationEventPublisher：事件推送还会引起Bug？
+
+#### 195 | 依赖查找ApplicationEventPublisher：ApplicationEventPublisher从何而来？
+
+#### 196 | ApplicationEventPublisher底层实现：ApplicationEventMulticaster也是Java Observable的延伸？
+
+#### 197 | 同步和异步Spring事件广播：Spring对J.U.C Executor接口的理解不够？
+
+- org.geekbang.thinking.in.spring.event.AsyncEventHandlerDemo（不包含ErrorHandler）
+
+- org.geekbang.thinking.in.spring.event.MySpringEventListener
+
+- org.geekbang.thinking.in.spring.event.AnnotatedAsyncEventHandlerDemo
+
+#### 198 | Spring 4.1事件异常处理：ErrorHandler 使用有怎样的限制？
+
+- org.geekbang.thinking.in.spring.event.AsyncEventHandlerDemo
+
+#### 199 | Spring事件/监听器实现原理：面向接口和注解的事件/监听器实现有区别吗？
+
+- org.geekbang.thinking.in.spring.event.CustomizedSpringEventDemo
+
+- org.geekbang.thinking.in.spring.event.CustomizedSpringEventDemo  
+
+#### 200 | 课外资料：Spring Boot和Spring Cloud事件也是Spring事件？
+
+#### 201 | 面试题精选
 
 ## 第十八章：Spring注解（Annotations） (12讲)
 

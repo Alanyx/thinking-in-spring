@@ -16,15 +16,9 @@
  */
 package org.geekbang.thinking.in.spring.event;
 
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.event.ApplicationEventMulticaster;
-import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.context.event.SimpleApplicationEventMulticaster;
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
@@ -35,7 +29,7 @@ import java.util.concurrent.ExecutorService;
 import static java.util.concurrent.Executors.newSingleThreadExecutor;
 
 /**
- * 注解驱动异步事件处理器示例
+ * 注解驱动异步事件处理器示例：对比 AsyncEventHandlerDemo
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
@@ -58,15 +52,15 @@ public class AnnotatedAsyncEventHandlerDemo {
 
         // 4. 关闭 Spring 应用上下文（ContextClosedEvent）
         context.close();
-
     }
 
-    @Async // 同步 -> 异步
+    @Async // 同步 -> 异步（没有该注解就是同步的），todo 注意配合 @EnableAsync 才能生效
     @EventListener
     public void onEvent(MySpringEvent event) {
         System.out.printf("[线程 ： %s] onEvent方法监听到事件 : %s\n", Thread.currentThread().getName(), event);
     }
 
+    // 自定义一个线程池：@Async 默认使用 SimpleAsyncTaskExecutor 线程池
     @Bean
     public Executor taskExecutor() {
         ExecutorService taskExecutor = newSingleThreadExecutor(new CustomizableThreadFactory("my-spring-event-thread-pool-a"));
